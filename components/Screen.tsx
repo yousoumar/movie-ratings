@@ -6,6 +6,7 @@ import {
   StatusBar,
   StyleSheet,
 } from "react-native";
+import { colors } from "../config/variables";
 
 interface ScreenPropos {}
 
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS == "android" ? StatusBar.currentHeight : 0,
+    backgroundColor: colors.background,
   },
 });
 

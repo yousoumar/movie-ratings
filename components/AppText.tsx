@@ -15,13 +15,12 @@ const AppText: FC<AppTextPropos> = ({
   return (
     <Text
       style={[
-        styles.text,
-        style,
         {
           color: colors[type],
           fontSize: sizes[type],
           fontWeight: weights[type],
         },
+        style,
       ]}
       {...others}
     >
@@ -31,9 +30,7 @@ const AppText: FC<AppTextPropos> = ({
 };
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 25,
-  },
+  text: {},
 });
 
 export default AppText;

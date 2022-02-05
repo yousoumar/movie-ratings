@@ -1,9 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import AppText from "./components/AppText";
-import MovieCard from "./components/MovieCard";
+
 import MoviesList from "./components/MoviesList";
 import Screen from "./components/Screen";
+import data from "./data/moviesList";
 
 export default function App() {
   return (
@@ -11,7 +12,7 @@ export default function App() {
       <AppText type="primary" style={{ textAlign: "center" }}>
         Movie Ratings
       </AppText>
-      <MoviesList />
+      <MoviesList data={data} />
     </Screen>
   );
 }

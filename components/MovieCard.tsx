@@ -1,39 +1,30 @@
 import React, { FC } from "react";
 import { View, StyleSheet, Image } from "react-native";
-import { colors } from "../config/variables";
+import { colors, weights } from "../config/variables";
 import AppText from "./AppText";
 
 interface MovieCardPropos {
   resume: string;
+  title: string;
   rate: number;
 }
 
-const MovieCard: FC<MovieCardPropos> = ({ resume, rate }) => {
-  const rateArry = new Array(rate);
-  console.log(rateArry);
+const MovieCard: FC<MovieCardPropos> = ({ resume, title, rate }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.imgContainer}>
-        <Image
-          style={styles.img}
-          resizeMode="cover"
-          source={require("../assets/movie.jpg")}
-        />
-      </View>
+      <AppText style={styles.rate}>{rate} ⭐️</AppText>
+      <Image
+        style={styles.img}
+        resizeMode="cover"
+        source={require("../assets/movie.jpg")}
+      />
+
       <View style={styles.content}>
-        <AppText type="secondary">Spiderman</AppText>
-        <AppText style={styles.text}>{resume}</AppText>
-        <AppText
-          style={{
-            textAlign: "right",
-            marginTop: 20,
-            borderColor: colors.primary,
-            borderWidth: 1,
-            borderStyle: "solid",
-            padding: 10,
-          }}
-        >
-          🌟🌟🌟🌟🌟🌟
+        <AppText type="secondary" numberOfLines={1}>
+          {title}
+        </AppText>
+        <AppText numberOfLines={1} style={styles.text}>
+          {resume}
         </AppText>
       </View>
     </View>
@@ -43,29 +34,33 @@ const MovieCard: FC<MovieCardPropos> = ({ resume, rate }) => {
 const styles = StyleSheet.create({
   container: {
     margin: 10,
-    shadowColor: colors.normal,
-    shadowOffset: {
-      width: 5,
-      height: 5,
-    },
-    shadowOpacity: 0.2,
-    elevation: 1,
     borderRadius: 10,
-    backgroundColor: "white",
+    borderColor: colors.primary,
+    borderWidth: 2,
+    borderTopEndRadius: 10,
+    borderTopStartRadius: 10,
+    overflow: "hidden",
   },
   content: {
     padding: 10,
   },
   img: {
     width: "100%",
+    height: 200,
   },
-  imgContainer: {
-    overflow: "hidden",
-    borderTopEndRadius: 10,
-    borderTopStartRadius: 10,
-  },
+
   text: {
     marginTop: 10,
+  },
+  rate: {
+    position: "absolute",
+    height: 40,
+    backgroundColor: colors.primary,
+    fontWeight: weights.primary,
+    zIndex: 2,
+    textAlign: "center",
+    fontSize: 20,
+    padding: 5,
   },
 });
 

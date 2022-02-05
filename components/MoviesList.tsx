@@ -1,30 +1,17 @@
 import React, { FC } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList } from "react-native";
+import { movieInterface } from "../data/moviesList";
 import MovieCard from "./MovieCard";
 
-interface MoviesListPropos {}
+interface MoviesListPropos {
+  data: movieInterface[];
+}
 
-const MoviesList: FC<MoviesListPropos> = (props) => {
-  const data = [
-    {
-      id: "1",
-      resume:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequivoluptatum commodi praesentium nobis debitis asperiores;",
-      rate: 5,
-    },
-    {
-      id: "2",
-      resume:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequivoluptatum commodi praesentium nobis debitis asperiores;",
-      rate: 5,
-    },
-  ];
+const MoviesList: FC<MoviesListPropos> = ({ data }) => {
   return (
     <FlatList
       data={data}
-      renderItem={(item) => (
-        <MovieCard resume={item.item.resume} rate={item.item.rate} />
-      )}
+      renderItem={(item) => <MovieCard {...item.item} />}
       keyExtractor={(item) => item.id}
     />
   );
