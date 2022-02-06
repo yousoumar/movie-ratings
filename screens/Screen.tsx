@@ -1,11 +1,5 @@
 import { FC } from "react";
-import {
-  Platform,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-} from "react-native";
+import { Platform, SafeAreaView, StatusBar, StyleSheet } from "react-native";
 import { colors } from "../config/variables";
 
 interface ScreenPropos {}

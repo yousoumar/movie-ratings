@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text, TextProps } from "react-native";
 import { colors, sizes, weights } from "../config/variables";
 
 interface AppTextPropos extends TextProps {
-  type?: "primary" | "secondary" | "normal";
+  type?: "primary" | "normal";
 }
 
 const AppText: FC<AppTextPropos> = ({
