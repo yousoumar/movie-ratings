@@ -1,23 +1,22 @@
+import { useRoute } from "@react-navigation/native";
+
 import React, { FC } from "react";
-import { View, StyleSheet, Image, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { Image, StyleSheet, View } from "react-native";
+import AppText from "../components/AppText";
+import Screen from "./Screen";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { useFetchMovieByID } from "../hooks/dataApi";
 import { colors, sizes, weights } from "../config/variables";
-import AppText from "./AppText";
-import { MovieInterface } from "../hooks/dataApi";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
-type NavigationProp = NativeStackNavigationProp<
-  MoviesStackNavigatorProp,
-  "MovieDetails"
->;
+type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "MovieDetails">;
 
-const MovieCard: FC<MovieInterface> = ({ resume, title, rate, id }) => {
-  const navigation = useNavigation<NavigationProp>();
+const MoviesDetailsScreen: FC<Props> = () => {
+  const route = useRoute<Props["route"]>();
+  const { rate, title, resume } = useFetchMovieByID(route.params.id);
+
   return (
-    <Pressable
-      onPress={() => navigation?.navigate("MovieDetails", { title, id })}
-    >
+    <Screen>
       <View style={styles.container}>
         <AppText style={styles.rate}>{rate} ⭐️</AppText>
         <Image
@@ -25,34 +24,25 @@ const MovieCard: FC<MovieInterface> = ({ resume, title, rate, id }) => {
           resizeMode="cover"
           source={require("../assets/movie.jpg")}
         />
-
-        <View style={styles.content}>
-          <AppText style={styles.title} numberOfLines={1}>
-            {title}
-          </AppText>
-          <AppText numberOfLines={1}>{resume}</AppText>
-        </View>
+        <AppText style={styles.title}>{title}</AppText>
+        <AppText>{resume}</AppText>
       </View>
-    </Pressable>
+    </Screen>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     margin: 10,
     borderRadius: 10,
-    borderColor: colors.primary,
-    borderWidth: 2,
     borderTopEndRadius: 10,
     borderTopStartRadius: 10,
     overflow: "hidden",
   },
-  content: {
-    padding: 10,
-  },
+
   img: {
     width: "100%",
-    height: 200,
   },
 
   title: {
@@ -72,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieCard;
+export default MoviesDetailsScreen;

@@ -1,15 +1,13 @@
 import React, { FC } from "react";
 import { FlatList } from "react-native";
 import MovieCard from "../components/MovieCard";
+import { useFetchMovies } from "../hooks/dataApi";
 import Screen from "./Screen";
-import { movieInterface } from "../data/moviesList";
-import AppText from "../components/AppText";
 
-interface ListingsScreenPropos {
-  data: movieInterface[];
-}
+interface MoviesScreenPropos {}
 
-const ListingsScreen: FC<ListingsScreenPropos> = ({ data }) => {
+const MoviesScreen: FC<MoviesScreenPropos> = () => {
+  const data = useFetchMovies();
   return (
     <Screen>
       <FlatList
@@ -21,4 +19,4 @@ const ListingsScreen: FC<ListingsScreenPropos> = ({ data }) => {
   );
 };
 
-export default ListingsScreen;
+export default MoviesScreen;

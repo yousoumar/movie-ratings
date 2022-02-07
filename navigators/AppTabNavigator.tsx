@@ -2,16 +2,15 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
 
-import ListingsNavigator from "./ListingsNavigator";
-import data from "../data/moviesList";
+import MoviesStackNavigator from "./MoviesStackNavigator";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppNavigatorContainer from "./AppNavigatorContainer";
-import CreateScreen from "../screens/CreateScreen";
+import CreateScreen from "../screens/CreateMovieScreen";
 
-interface AppNavigatorPropos {}
+interface Props {}
 
-const AppNavigator: FC<AppNavigatorPropos> = (props) => {
+const AppNavigator: FC<Props> = (props) => {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -23,30 +22,33 @@ const AppNavigator: FC<AppNavigatorPropos> = (props) => {
       >
         <Tab.Screen
           name="Movies List"
+          component={MoviesStackNavigator}
           options={{
             tabBarLabel: "Movies List",
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="home" color={color} size={size} />
-            ),
-          }}
-        >
-          {(props) => <ListingsNavigator {...props} data={data} />}
-        </Tab.Screen>
-        <Tab.Screen
-          name="Create"
-          options={{
-            tabBarLabel: "New Movie",
-            tabBarIcon: ({ color, size }) => (
+            tabBarIcon: ({ color, size, focused }) => (
               <MaterialCommunityIcons
-                name="plus-circle"
+                name={focused ? "home" : "home-outline"}
                 color={color}
                 size={size}
               />
             ),
           }}
-        >
-          {(props) => <CreateScreen />}
-        </Tab.Screen>
+        />
+
+        <Tab.Screen
+          name="Create"
+          component={CreateScreen}
+          options={{
+            tabBarLabel: "New Movie",
+            tabBarIcon: ({ color, size, focused }) => (
+              <MaterialCommunityIcons
+                name={focused ? "plus-circle" : "plus-circle-outline"}
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
       </Tab.Navigator>
     </AppNavigatorContainer>
   );

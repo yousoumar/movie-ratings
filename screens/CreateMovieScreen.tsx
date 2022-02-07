@@ -4,7 +4,7 @@ import Screen from "./Screen";
 
 interface CreateScreenPropos {}
 
-const CreateScreen: FC<CreateScreenPropos> = (props) => {
+const CreateMovieScreen: FC<CreateScreenPropos> = (props) => {
   return (
     <Screen>
       <AppText></AppText>
@@ -12,4 +12,4 @@ const CreateScreen: FC<CreateScreenPropos> = (props) => {
   );
 };
 
-export default CreateScreen;
+export default CreateMovieScreen;

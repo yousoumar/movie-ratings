@@ -6,8 +6,8 @@ export const colors = {
 
 export const sizes = {
   primary: 50,
-  secondary: 25,
-  normal: 16,
+  secondary: 30,
+  normal: 20,
 };
 
 export const weights: { primary: "900"; secondary: "700"; normal: "400" } = {
