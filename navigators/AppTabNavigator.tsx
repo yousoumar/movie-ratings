@@ -7,6 +7,7 @@ import MoviesStackNavigator from "./MoviesStackNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppNavigatorContainer from "./AppNavigatorContainer";
 import CreateScreen from "../screens/CreateMovieScreen";
+import AccountScreen from "../screens/AccountScreen";
 
 interface Props {}
 
@@ -24,7 +25,7 @@ const AppNavigator: FC<Props> = (props) => {
           name="Movies List"
           component={MoviesStackNavigator}
           options={{
-            tabBarLabel: "Movies List",
+            tabBarLabel: "Movies",
             tabBarIcon: ({ color, size, focused }) => (
               <MaterialCommunityIcons
                 name={focused ? "home" : "home-outline"}
@@ -36,13 +37,12 @@ const AppNavigator: FC<Props> = (props) => {
         />
 
         <Tab.Screen
-          name="Create"
-          component={CreateScreen}
+          name="Account"
+          component={AccountScreen}
           options={{
-            tabBarLabel: "New Movie",
             tabBarIcon: ({ color, size, focused }) => (
               <MaterialCommunityIcons
-                name={focused ? "plus-circle" : "plus-circle-outline"}
+                name={focused ? "account" : "account-outline"}
                 color={color}
                 size={size}
               />
