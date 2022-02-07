@@ -1,13 +1,13 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
 
 import MoviesStackNavigator from "./MoviesStackNavigator";
-
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppNavigatorContainer from "./AppNavigatorContainer";
-import CreateScreen from "../screens/CreateMovieScreen";
 import AccountScreen from "../screens/AccountScreen";
+import CreateMovieScreen from "../screens/CreateMovieScreen";
+import { weights } from "../config/variables";
 
 interface Props {}
 
@@ -19,6 +19,10 @@ const AppNavigator: FC<Props> = (props) => {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
+          tabBarLabelStyle: {
+            fontWeight: weights.primary,
+            textTransform: "uppercase",
+          },
         }}
       >
         <Tab.Screen
@@ -35,7 +39,20 @@ const AppNavigator: FC<Props> = (props) => {
             ),
           }}
         />
-
+        <Tab.Screen
+          name="NewMovie"
+          component={CreateMovieScreen}
+          options={{
+            tabBarLabel: "New Movie",
+            tabBarIcon: ({ size, color, focused }) => (
+              <MaterialCommunityIcons
+                name={focused ? "plus-circle" : "plus-circle-outline"}
+                color={color}
+                size={size + 10}
+              />
+            ),
+          }}
+        />
         <Tab.Screen
           name="Account"
           component={AccountScreen}

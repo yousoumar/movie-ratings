@@ -7,7 +7,7 @@ interface AppNavigatorContainerPropos {}
 const navigatorTheme = {
   dark: false,
   colors: {
-    primary: colors.primary,
+    primary: colors.normal,
     background: colors.background,
     card: colors.background,
     text: colors.normal,

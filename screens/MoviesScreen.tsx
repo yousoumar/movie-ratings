@@ -14,14 +14,6 @@ const MoviesScreen: FC<Props> = ({ navigation }) => {
   const data = useFetchMovies();
   return (
     <Screen>
-      <Pressable onPress={() => navigation.navigate("CreateMovie")}>
-        <MaterialCommunityIcons
-          name="plus-circle"
-          size={40}
-          color={colors.primary}
-          style={{ textAlign: "right", marginRight: 10, marginBottom: 10 }}
-        />
-      </Pressable>
       <FlatList
         data={data}
         renderItem={(item) => <MovieCard {...item.item} />}

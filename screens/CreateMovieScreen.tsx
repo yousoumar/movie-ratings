@@ -23,7 +23,6 @@ const CreateMovieScreen: FC<CreateScreenPropos> = (props) => {
         validationSchema={validationSchema}
       >
         <View style={styles.container}>
-          <AppText>Movie title</AppText>
           <TextInput
             placeholder="Title"
             style={styles.input}
