@@ -21,7 +21,7 @@ const MoviesStackNavigator: FC<Props> = () => {
       screenOptions={{
         headerBackTitleVisible: false,
         headerTitleStyle: {
-          fontSize: sizes.normal,
+          fontSize: sizes.secondary,
           fontWeight: weights.primary,
         },
       }}

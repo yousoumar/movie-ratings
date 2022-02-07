@@ -10,7 +10,7 @@ const navigatorTheme = {
     primary: colors.primary,
     background: colors.background,
     card: colors.background,
-    text: colors.normal,
+    text: colors.white,
     border: colors.primary,
     notification: colors.primary,
   },

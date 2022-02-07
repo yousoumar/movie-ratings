@@ -16,7 +16,7 @@ const AppText: FC<AppTextPropos> = ({
     <Text
       style={[
         {
-          color: colors[type],
+          color: colors.white,
           fontSize: sizes[type],
           fontWeight: weights[type],
         },
@@ -28,9 +28,5 @@ const AppText: FC<AppTextPropos> = ({
     </Text>
   );
 };
-
-const styles = StyleSheet.create({
-  text: {},
-});
 
 export default AppText;

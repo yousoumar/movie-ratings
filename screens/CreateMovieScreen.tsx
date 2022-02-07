@@ -26,7 +26,7 @@ const CreateMovieScreen: FC<CreateScreenPropos> = (props) => {
           <TextInput
             placeholder="Title"
             style={styles.input}
-            placeholderTextColor={colors.normal}
+            placeholderTextColor={colors.white}
           />
         </View>
       </Formik>
