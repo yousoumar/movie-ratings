@@ -1,7 +1,7 @@
 import { useRoute } from "@react-navigation/native";
 
 import React, { FC } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import Screen from "./Screen";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -16,18 +16,16 @@ const MoviesDetailsScreen: FC<Props> = () => {
   const { rate, title, resume } = useFetchMovieByID(route.params.id);
 
   return (
-    <Screen>
-      <View style={styles.container}>
-        <AppText style={styles.rate}>{rate} ⭐️</AppText>
-        <Image
-          style={styles.img}
-          resizeMode="cover"
-          source={require("../assets/movie.jpg")}
-        />
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText>{resume}</AppText>
-      </View>
-    </Screen>
+    <ScrollView style={styles.container}>
+      <AppText style={styles.rate}>{rate} ⭐️</AppText>
+      <Image
+        style={styles.img}
+        resizeMode="cover"
+        source={require("../assets/movie.jpg")}
+      />
+
+      <AppText>{resume}</AppText>
+    </ScrollView>
   );
 };
 
@@ -43,13 +41,9 @@ const styles = StyleSheet.create({
 
   img: {
     width: "100%",
+    marginBottom: 10,
   },
 
-  title: {
-    marginVertical: 10,
-    fontSize: sizes.secondary,
-    fontWeight: weights.primary,
-  },
   rate: {
     position: "absolute",
     height: 40,

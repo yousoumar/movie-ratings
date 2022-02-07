@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
     borderColor: colors.black,
-    borderWidth: 2,
+    borderWidth: 1,
     borderTopEndRadius: 10,
     borderTopStartRadius: 10,
     overflow: "hidden",
