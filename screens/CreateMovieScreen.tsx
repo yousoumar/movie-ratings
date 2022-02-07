@@ -41,9 +41,10 @@ const styles = StyleSheet.create({
   input: {
     marginVertical: 10,
     borderColor: colors.primary,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
+    borderWidth: 2,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 30,
     color: colors.primary,
   },
 });

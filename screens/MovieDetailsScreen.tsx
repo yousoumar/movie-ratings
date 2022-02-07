@@ -3,10 +3,9 @@ import { useRoute } from "@react-navigation/native";
 import React, { FC } from "react";
 import { Image, ScrollView, StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
-import Screen from "./Screen";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useFetchMovieByID } from "../hooks/dataApi";
-import { colors, sizes, weights } from "../config/variables";
+import { colors, weights } from "../config/variables";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "MovieDetails">;
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
   img: {
     width: "100%",
     marginBottom: 10,
+    borderRadius: 10,
   },
 
   rate: {
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     padding: 5,
+    borderTopLeftRadius: 10,
   },
 });
 
