@@ -1,8 +1,9 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Formik } from "formik";
+import { Formik, FormikHelpers } from "formik";
 import React, { FC } from "react";
 import { Button, StyleSheet, View } from "react-native";
 import * as Yup from "yup";
+import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
 import { colors, sizes } from "../config/variables";
 import { useAddNewMovie } from "../hooks/api";
@@ -48,8 +49,18 @@ const CreateMovieScreen: FC<Props> = ({ navigation }) => {
               name="resume"
               label="Resume"
             ></FormField>
-            <Button title="Submit" onPress={() => handleSubmit()} />
-            <Button title="Cancel" onPress={() => resetForm()} />
+            <View style={styles.buttons}>
+              <AppButton
+                style={{ marginRight: 10 }}
+                outline={true}
+                onPress={() => resetForm()}
+              >
+                Cancel
+              </AppButton>
+              <AppButton onPress={() => handleSubmit()}>
+                Add to the list
+              </AppButton>
+            </View>
           </View>
         )}
       </Formik>
@@ -58,6 +69,10 @@ const CreateMovieScreen: FC<Props> = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
   container: {
     padding: 10,
   },

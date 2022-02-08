@@ -1,5 +1,5 @@
 import React from "react";
-import { useFormikContext } from "formik";
+import { FormikValues, useFormikContext } from "formik";
 import { StyleSheet, TextInput, TextInputProps, View } from "react-native";
 import AppText from "./AppText";
 import { colors, sizes } from "../config/variables";
@@ -10,14 +10,14 @@ interface Props extends TextInputProps {
 }
 const FormField: React.FC<Props> = ({ name, label, ...otherProps }) => {
   const { setFieldTouched, setFieldValue, errors, touched, values } =
-    useFormikContext<any>();
+    useFormikContext<FormikValues>();
 
   return (
     <View style={styles.container}>
       <AppText style={styles.label}>{label}</AppText>
       <TextInput
         style={styles.input}
-        onBlur={() => setFieldTouched(name)}
+        onChange={() => setFieldTouched(name)}
         onChangeText={(text) => setFieldValue(name, text)}
         value={values[name].toString()}
         {...otherProps}
