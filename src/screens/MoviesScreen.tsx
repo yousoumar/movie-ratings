@@ -1,17 +1,17 @@
 import React, { FC } from "react";
 import { FlatList, StyleSheet, TextInput } from "react-native";
 import MovieCard from "../components/MovieCard";
-import { useFetchAllMovies } from "../hooks/api";
 import Screen from "./Screen";
 
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { colors } from "../config/variables";
+import { useDataContext } from "../contexts/MoviesContext";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "Movies">;
 
-const MoviesScreen: FC<Props> = ({ navigation }) => {
-  const data = useFetchAllMovies();
+const MoviesScreen: FC<Props> = () => {
+  const { data } = useDataContext();
   return (
     <Screen>
       <TextInput
@@ -35,10 +35,10 @@ const styles = StyleSheet.create({
   input: {
     marginHorizontal: 20,
     marginVertical: 10,
-    borderColor: colors.primary,
+    borderColor: colors.white,
     borderWidth: 2,
     padding: 10,
-    borderRadius: 30,
+    borderRadius: 10,
     fontSize: 20,
     textAlign: "center",
   },

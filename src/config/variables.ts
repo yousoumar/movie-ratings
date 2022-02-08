@@ -3,6 +3,7 @@ export const colors = {
   white: "white",
   black: "black",
   background: "#191919",
+  error: "crimson",
 };
 
 export const sizes = {

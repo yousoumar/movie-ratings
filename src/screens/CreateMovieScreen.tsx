@@ -1,9 +1,12 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Formik } from "formik";
 import React, { FC } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
 import * as Yup from "yup";
-import AppText from "../components/AppText";
-import { colors } from "../config/variables";
+import FormField from "../components/FormField";
+import { colors, sizes } from "../config/variables";
+import { useAddNewMovie } from "../hooks/api";
+import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 import Screen from "./Screen";
 
 const validationSchema = Yup.object().shape({
@@ -12,23 +15,38 @@ const validationSchema = Yup.object().shape({
   rate: Yup.number().required().min(0).label("Rate"),
 });
 
-interface CreateScreenPropos {}
+type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "CreateMovie">;
 
-const CreateMovieScreen: FC<CreateScreenPropos> = (props) => {
+const CreateMovieScreen: FC<Props> = ({ navigation }) => {
   return (
     <Screen>
       <Formik
-        initialValues={{ title: "", resume: "", rate: "" }}
-        onSubmit={() => {}}
+        initialValues={{ title: "", resume: "", rate: 0 }}
+        onSubmit={(values, { resetForm }) => {
+          useAddNewMovie(
+            values.title,
+            values.rate,
+            values.resume,
+            Math.random().toString()
+          );
+          resetForm();
+          navigation.navigate("Movies");
+        }}
         validationSchema={validationSchema}
       >
-        <View style={styles.container}>
-          <TextInput
-            placeholder="Title"
-            style={styles.input}
-            placeholderTextColor={colors.white}
-          />
-        </View>
+        {({ handleSubmit }) => (
+          <View style={styles.container}>
+            <FormField name="title" label="Title"></FormField>
+            <FormField name="rate" label="Rate"></FormField>
+            <FormField
+              numberOfLines={4}
+              multiline={true}
+              name="resume"
+              label="Resume"
+            ></FormField>
+            <Button title="Submit" onPress={() => handleSubmit()} />
+          </View>
+        )}
       </Formik>
     </Screen>
   );
@@ -38,6 +56,9 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
   },
+  label: {
+    fontSize: sizes.secondary,
+  },
   input: {
     marginVertical: 10,
     borderColor: colors.primary,
@@ -46,6 +67,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 30,
     color: colors.primary,
+    fontSize: sizes.normal,
   },
 });
 
