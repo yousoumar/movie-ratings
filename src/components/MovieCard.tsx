@@ -3,9 +3,9 @@ import { View, StyleSheet, Image, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { colors, sizes, weights } from "../config/variables";
 import AppText from "./AppText";
-import { MovieInterface } from "../hooks/dataApi";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
+import { MovieInterface } from "../data/data";
 
 type NavigationProp = NativeStackNavigationProp<
   MoviesStackNavigatorProp,

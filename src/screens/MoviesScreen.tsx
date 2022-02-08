@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { FlatList, StyleSheet, TextInput } from "react-native";
 import MovieCard from "../components/MovieCard";
-import { useFetchMovies } from "../hooks/dataApi";
+import { useFetchAllMovies } from "../hooks/api";
 import Screen from "./Screen";
 
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
@@ -11,7 +11,7 @@ import { colors } from "../config/variables";
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "Movies">;
 
 const MoviesScreen: FC<Props> = ({ navigation }) => {
-  const data = useFetchMovies();
+  const data = useFetchAllMovies();
   return (
     <Screen>
       <TextInput

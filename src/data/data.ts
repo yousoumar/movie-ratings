@@ -30,10 +30,4 @@ const data: MovieInterface[] = [
   },
 ];
 
-export const useFetchMovies = () => {
-  return data;
-};
-
-export const useFetchMovieByID = (id: string) => {
-  return data.find((d) => d.id === id) as MovieInterface;
-};
+export default data;
