@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Platform, StyleSheet, Text, TextProps } from "react-native";
+import { Text, TextProps } from "react-native";
 import { colors, sizes, weights } from "../config/variables";
 
 interface AppTextPropos extends TextProps {

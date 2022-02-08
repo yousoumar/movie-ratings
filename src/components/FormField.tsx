@@ -1,8 +1,8 @@
-import React from "react";
 import { FormikValues, useFormikContext } from "formik";
+import React from "react";
 import { StyleSheet, TextInput, TextInputProps, View } from "react-native";
-import AppText from "./AppText";
 import { colors, sizes } from "../config/variables";
+import AppText from "./AppText";
 
 interface Props extends TextInputProps {
   name: string;

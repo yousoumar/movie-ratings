@@ -1,11 +1,10 @@
 import { useRoute } from "@react-navigation/native";
-
-import React, { FC } from "react";
-import { Image, ScrollView, StyleSheet, View } from "react-native";
-import AppText from "../components/AppText";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useFetchMovieByID } from "../hooks/dataApi";
+import React, { FC } from "react";
+import { Image, ScrollView, StyleSheet } from "react-native";
+import AppText from "../components/AppText";
 import { colors, weights } from "../config/variables";
+import { useFetchMovieByID } from "../hooks/dataApi";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "MovieDetails">;

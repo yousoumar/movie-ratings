@@ -5,10 +5,10 @@ import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
-import { colors, sizes } from "../config/variables";
+import Screen from "../components/Screen";
+import { sizes } from "../config/variables";
 import { useAddNewMovie } from "../hooks/dataApi";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
-import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(4).label("Title"),

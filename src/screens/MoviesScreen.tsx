@@ -1,13 +1,12 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC, useState } from "react";
 import { FlatList, StyleSheet, TextInput } from "react-native";
+import AppText from "../components/AppText";
 import MovieCard from "../components/MovieCard";
 import Screen from "../components/Screen";
-
-import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { colors, sizes, weights } from "../config/variables";
 import { initialData } from "../hooks/dataApi";
-import AppText from "../components/AppText";
+import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "Movies">;
 

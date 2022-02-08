@@ -2,12 +2,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
-
-import MoviesStackNavigator from "./MoviesStackNavigator";
-import AppNavigatorContainer from "./AppNavigatorContainer";
+import { weights } from "../config/variables";
 import AccountScreen from "../screens/AccountScreen";
 import CreateMovieScreen from "../screens/CreateMovieScreen";
-import { weights } from "../config/variables";
+import AppNavigatorContainer from "./AppNavigatorContainer";
+import MoviesStackNavigator from "./MoviesStackNavigator";
 
 interface Props {}
 

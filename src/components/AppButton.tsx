@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { StyleSheet, Pressable, PressableProps } from "react-native";
+import { Pressable, PressableProps, StyleSheet } from "react-native";
 import { colors } from "../config/variables";
 import AppText from "./AppText";
 

@@ -1,11 +1,11 @@
-import React, { FC } from "react";
-import { View, StyleSheet, Image, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { colors, sizes, weights } from "../config/variables";
-import AppText from "./AppText";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
+import React, { FC } from "react";
+import { Image, Pressable, StyleSheet, View } from "react-native";
+import { colors, sizes, weights } from "../config/variables";
 import { MovieInterface } from "../hooks/dataApi";
+import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
+import AppText from "./AppText";
 
 type NavigationProp = NativeStackNavigationProp<
   MoviesStackNavigatorProp,
