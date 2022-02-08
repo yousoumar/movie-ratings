@@ -34,7 +34,7 @@ const CreateMovieScreen: FC<Props> = ({ navigation }) => {
         }}
         validationSchema={validationSchema}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmit, resetForm }) => (
           <View style={styles.container}>
             <FormField name="title" label="Title"></FormField>
             <FormField
@@ -49,6 +49,7 @@ const CreateMovieScreen: FC<Props> = ({ navigation }) => {
               label="Resume"
             ></FormField>
             <Button title="Submit" onPress={() => handleSubmit()} />
+            <Button title="Cancel" onPress={() => resetForm()} />
           </View>
         )}
       </Formik>
