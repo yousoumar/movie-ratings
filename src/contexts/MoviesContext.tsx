@@ -1,13 +1,11 @@
-import React, { createContext, FC, useContext, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { createContext, FC, useContext } from "react";
 import { MovieInterface } from "../data/data";
 import { useFetchAllMovies } from "../hooks/api";
 
 interface ContextInterface {
   data: MovieInterface[];
-  setData: React.Dispatch<React.SetStateAction<MovieInterface[]>>;
 }
-const DataContext = createContext<ContextInterface>({} as any);
+const DataContext = createContext<ContextInterface>({} as ContextInterface);
 export const useDataContext = () => {
   return useContext(DataContext);
 };
@@ -15,9 +13,8 @@ export const useDataContext = () => {
 interface Props {}
 
 const MoviesContext: FC<Props> = ({ children }) => {
-  const [data, setData] = useState<MovieInterface[]>(useFetchAllMovies());
   return (
-    <DataContext.Provider value={{ data, setData }}>
+    <DataContext.Provider value={{ data: useFetchAllMovies() }}>
       {children}
     </DataContext.Provider>
   );

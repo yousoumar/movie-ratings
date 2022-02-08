@@ -1,4 +1,4 @@
-import data, { MovieInterface } from "../data/data";
+import { MovieInterface, data } from "../data/data";
 
 export const useFetchAllMovies = () => {
   return data;

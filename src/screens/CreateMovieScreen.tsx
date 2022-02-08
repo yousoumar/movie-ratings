@@ -12,7 +12,7 @@ import Screen from "./Screen";
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(4).label("Title"),
   resume: Yup.string().required().min(4).label("Resume"),
-  rate: Yup.number().required().min(0).label("Rate"),
+  rate: Yup.number().required().min(1).label("Rate"),
 });
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "CreateMovie">;
@@ -37,7 +37,11 @@ const CreateMovieScreen: FC<Props> = ({ navigation }) => {
         {({ handleSubmit }) => (
           <View style={styles.container}>
             <FormField name="title" label="Title"></FormField>
-            <FormField name="rate" label="Rate"></FormField>
+            <FormField
+              keyboardType="numeric"
+              name="rate"
+              label="Rate"
+            ></FormField>
             <FormField
               numberOfLines={4}
               multiline={true}

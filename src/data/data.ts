@@ -5,7 +5,7 @@ export interface MovieInterface {
   rate: number;
 }
 
-const data: MovieInterface[] = [
+export const data: MovieInterface[] = [
   {
     id: "1",
     title: "Spiderman",
@@ -29,5 +29,3 @@ const data: MovieInterface[] = [
     rate: 5,
   },
 ];
-
-export default data;

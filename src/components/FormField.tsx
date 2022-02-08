@@ -19,7 +19,7 @@ const FormField: React.FC<Props> = ({ name, label, ...otherProps }) => {
         style={styles.input}
         onBlur={() => setFieldTouched(name)}
         onChangeText={(text) => setFieldValue(name, text)}
-        value={values[name]}
+        value={values[name].toString()}
         {...otherProps}
       />
       {touched[name] && (
