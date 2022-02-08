@@ -5,15 +5,24 @@ import AppText from "./AppText";
 
 interface Props extends PressableProps {
   outline?: boolean;
+  marginLeft?: number;
 }
-const AppButton: FC<Props> = ({ children, outline = false, ...others }) => {
+const AppButton: FC<Props> = ({
+  children,
+  outline = false,
+  marginLeft = 0,
+  ...others
+}) => {
   return (
     <Pressable
       {...others}
       style={[
         styles.container,
 
-        { backgroundColor: outline ? "transparent" : colors.primary },
+        {
+          backgroundColor: outline ? "transparent" : colors.primary,
+          marginLeft: marginLeft,
+        },
       ]}
     >
       <AppText>{children}</AppText>
@@ -24,11 +33,11 @@ const AppButton: FC<Props> = ({ children, outline = false, ...others }) => {
 const styles = StyleSheet.create({
   container: {
     borderColor: colors.primary,
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    marginLeft: 30,
     marginTop: 30,
+    flex: 1,
   },
 });
 

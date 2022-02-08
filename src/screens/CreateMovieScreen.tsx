@@ -1,18 +1,18 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Formik, FormikHelpers } from "formik";
+import { Formik } from "formik";
 import React, { FC } from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
 import { colors, sizes } from "../config/variables";
-import { useAddNewMovie } from "../hooks/api";
+import { useAddNewMovie } from "../hooks/dataApi";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
-import Screen from "./Screen";
+import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(4).label("Title"),
-  resume: Yup.string().required().min(4).label("Resume"),
+  resume: Yup.string().required().min(30).label("Resume"),
   rate: Yup.number().required().min(1).label("Rate"),
 });
 
@@ -55,9 +55,9 @@ const CreateMovieScreen: FC<Props> = ({ navigation }) => {
                 outline={true}
                 onPress={() => resetForm()}
               >
-                Cancel
+                Reset
               </AppButton>
-              <AppButton onPress={() => handleSubmit()}>
+              <AppButton marginLeft={30} onPress={() => handleSubmit()}>
                 Add to the list
               </AppButton>
             </View>
@@ -78,16 +78,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: sizes.secondary,
-  },
-  input: {
-    marginVertical: 10,
-    borderColor: colors.primary,
-    borderWidth: 2,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 30,
-    color: colors.primary,
-    fontSize: sizes.normal,
   },
 });
 

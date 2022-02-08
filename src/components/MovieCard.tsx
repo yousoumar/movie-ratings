@@ -5,7 +5,7 @@ import { colors, sizes, weights } from "../config/variables";
 import AppText from "./AppText";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
-import { MovieInterface } from "../data/data";
+import { MovieInterface } from "../hooks/dataApi";
 
 type NavigationProp = NativeStackNavigationProp<
   MoviesStackNavigatorProp,

@@ -5,7 +5,7 @@ export interface MovieInterface {
   rate: number;
 }
 
-export const data: MovieInterface[] = [
+export const initialData: MovieInterface[] = [
   {
     id: "1",
     title: "Spiderman",
@@ -29,3 +29,20 @@ export const data: MovieInterface[] = [
     rate: 5,
   },
 ];
+
+export const useFetchAllMovies = () => {
+  return initialData;
+};
+
+export const useFetchMovieByID = (id: string) => {
+  return initialData.find((d) => d.id === id) as MovieInterface;
+};
+
+export const useAddNewMovie = (
+  title: string,
+  rate: number,
+  resume: string,
+  id: string
+) => {
+  initialData.unshift({ title, rate, resume, id });
+};

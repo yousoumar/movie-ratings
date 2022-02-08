@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import { Image, ScrollView, StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useFetchMovieByID } from "../hooks/api";
+import { useFetchMovieByID } from "../hooks/dataApi";
 import { colors, weights } from "../config/variables";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
