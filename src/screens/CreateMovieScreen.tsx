@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Formik } from "formik";
 import React, { FC } from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
@@ -22,49 +22,51 @@ const CreateMovieScreen: FC<Props> = ({ navigation }) => {
   const { addNewMovie } = useDataContext();
   return (
     <Screen>
-      <Formik
-        initialValues={{ title: "", resume: "", rate: 0 }}
-        onSubmit={(values, { resetForm }) => {
-          addNewMovie(
-            values.title,
-            values.rate,
-            values.resume,
-            Math.random().toString()
-          );
-          resetForm();
-          navigation.navigate("Movies");
-        }}
-        validationSchema={validationSchema}
-      >
-        {({ handleSubmit, resetForm }) => (
-          <View style={styles.container}>
-            <FormField name="title" label="Title"></FormField>
-            <FormField
-              keyboardType="numeric"
-              name="rate"
-              label="Rate"
-            ></FormField>
-            <FormField
-              numberOfLines={4}
-              multiline={true}
-              name="resume"
-              label="Resume"
-            ></FormField>
-            <View style={styles.buttons}>
-              <AppButton
-                style={{ marginRight: 10 }}
-                outline={true}
-                onPress={() => resetForm()}
-              >
-                Reset
-              </AppButton>
-              <AppButton marginLeft={30} onPress={() => handleSubmit()}>
-                Add to the list
-              </AppButton>
+      <ScrollView>
+        <Formik
+          initialValues={{ title: "", resume: "", rate: 0 }}
+          onSubmit={(values, { resetForm }) => {
+            addNewMovie(
+              values.title,
+              values.rate,
+              values.resume,
+              Math.random().toString()
+            );
+            resetForm();
+            navigation.navigate("Movies");
+          }}
+          validationSchema={validationSchema}
+        >
+          {({ handleSubmit, resetForm }) => (
+            <View style={styles.container}>
+              <FormField name="title" label="Title"></FormField>
+              <FormField
+                keyboardType="numeric"
+                name="rate"
+                label="Rate"
+              ></FormField>
+              <FormField
+                numberOfLines={4}
+                multiline={true}
+                name="resume"
+                label="Resume"
+              ></FormField>
+              <View style={styles.buttons}>
+                <AppButton
+                  style={{ marginRight: 10 }}
+                  outline={true}
+                  onPress={() => resetForm()}
+                >
+                  Reset
+                </AppButton>
+                <AppButton marginLeft={30} onPress={() => handleSubmit()}>
+                  Add to the list
+                </AppButton>
+              </View>
             </View>
-          </View>
-        )}
-      </Formik>
+          )}
+        </Formik>
+      </ScrollView>
     </Screen>
   );
 };
