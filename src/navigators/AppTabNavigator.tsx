@@ -1,20 +1,20 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
-import { weights } from "../config/variables";
+import { navigatorTheme, weights } from "../config/variables";
 import AccountScreen from "../screens/AccountScreen";
 import CreateMovieScreen from "../screens/CreateMovieScreen";
-import AppNavigatorContainer from "./AppNavigatorContainer";
 import MoviesStackNavigator from "./MoviesStackNavigator";
 
 interface Props {}
 
-const AppNavigator: FC<Props> = (props) => {
+const AppTabNavigator: FC<Props> = (props) => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <AppNavigatorContainer>
+    <NavigationContainer theme={navigatorTheme}>
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
@@ -66,7 +66,7 @@ const AppNavigator: FC<Props> = (props) => {
           }}
         />
       </Tab.Navigator>
-    </AppNavigatorContainer>
+    </NavigationContainer>
   );
 };
 
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default AppNavigator;
+export default AppTabNavigator;

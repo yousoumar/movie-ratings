@@ -4,14 +4,15 @@ import React, { FC } from "react";
 import { Image, ScrollView, StyleSheet } from "react-native";
 import AppText from "../components/AppText";
 import { colors, weights } from "../config/variables";
-import { useFetchMovieByID } from "../hooks/dataApi";
+import { useDataContext } from "../context/DataContextProvider";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "MovieDetails">;
 
 const MoviesDetailsScreen: FC<Props> = () => {
   const route = useRoute<Props["route"]>();
-  const { rate, title, resume } = useFetchMovieByID(route.params.id);
+  const { fetchMovieById } = useDataContext();
+  const { rate, resume } = fetchMovieById(route.params.id);
 
   return (
     <ScrollView style={styles.container}>

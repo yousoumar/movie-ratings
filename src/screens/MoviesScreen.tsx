@@ -1,31 +1,25 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { FlatList, StyleSheet, TextInput } from "react-native";
 import AppText from "../components/AppText";
 import MovieCard from "../components/MovieCard";
 import Screen from "../components/Screen";
 import { colors, sizes, weights } from "../config/variables";
-import { initialData } from "../hooks/dataApi";
+import { useDataContext } from "../context/DataContextProvider";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "Movies">;
 
 const MoviesScreen: FC<Props> = () => {
-  const [data, setData] = useState(initialData);
-  const [renderData, setRenderData] = useState(false);
+  const { data, filterMovies } = useDataContext();
+  console.log(data);
   return (
     <Screen>
       <TextInput
         style={styles.input}
         placeholder="Filter movies by title"
         placeholderTextColor={colors.white}
-        onChangeText={(text) => {
-          if (text.trim() === "") {
-            setData(initialData);
-          } else {
-            setData(data.filter((d) => d.title.includes(text)));
-          }
-        }}
+        onChangeText={(text) => filterMovies(text)}
       />
       <FlatList
         data={data}

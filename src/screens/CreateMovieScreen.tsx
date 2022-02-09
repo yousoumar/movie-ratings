@@ -7,7 +7,7 @@ import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
 import Screen from "../components/Screen";
 import { sizes } from "../config/variables";
-import { useAddNewMovie } from "../hooks/dataApi";
+import { useDataContext } from "../context/DataContextProvider";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
 const validationSchema = Yup.object().shape({
@@ -19,12 +19,13 @@ const validationSchema = Yup.object().shape({
 type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "CreateMovie">;
 
 const CreateMovieScreen: FC<Props> = ({ navigation }) => {
+  const { addNewMovie } = useDataContext();
   return (
     <Screen>
       <Formik
         initialValues={{ title: "", resume: "", rate: 0 }}
         onSubmit={(values, { resetForm }) => {
-          useAddNewMovie(
+          addNewMovie(
             values.title,
             values.rate,
             values.resume,

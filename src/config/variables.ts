@@ -17,3 +17,15 @@ export const weights: { primary: "900"; secondary: "700"; normal: "400" } = {
   secondary: "700",
   normal: "400",
 };
+
+export const navigatorTheme = {
+  dark: false,
+  colors: {
+    primary: colors.primary,
+    background: colors.background,
+    card: colors.background,
+    text: colors.white,
+    border: colors.primary,
+    notification: colors.primary,
+  },
+};
