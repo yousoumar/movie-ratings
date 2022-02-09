@@ -12,7 +12,7 @@ type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "Movies">;
 
 const MoviesScreen: FC<Props> = () => {
   const { data, filterMovies } = useDataContext();
-  console.log(data);
+
   return (
     <Screen>
       <TextInput
