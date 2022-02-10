@@ -70,7 +70,7 @@ const DataContextProvider: FC = ({ children }) => {
     if (text.trim() === "") {
       setData(initialData);
     } else {
-      setData(data.filter((d) => d.title.includes(text)));
+      setData(data.filter((d) => d.title.toLowerCase().includes(text)));
     }
   };
 

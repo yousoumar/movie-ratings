@@ -19,7 +19,7 @@ const MoviesScreen: FC<Props> = () => {
         style={styles.input}
         placeholder="Filter movies by title"
         placeholderTextColor={colors.white}
-        onChangeText={(text) => filterMovies(text)}
+        onChangeText={(text) => filterMovies(text.toLowerCase())}
       />
       <FlatList
         data={data}
