@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
 import Screen from "../components/Screen";
-import { sizes } from "../config/variables";
 import { useDataContext } from "../context/DataContextProvider";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
@@ -78,9 +77,6 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 10,
-  },
-  label: {
-    fontSize: sizes.secondary,
   },
 });
 

@@ -2,11 +2,11 @@ import { FC } from "react";
 import { Text, TextProps } from "react-native";
 import { colors, sizes, weights } from "../config/variables";
 
-interface AppTextPropos extends TextProps {
+interface Props extends TextProps {
   type?: "primary" | "normal";
 }
 
-const AppText: FC<AppTextPropos> = ({
+const AppText: FC<Props> = ({
   children,
   style,
   type = "normal",

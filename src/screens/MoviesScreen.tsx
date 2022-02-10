@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 100,
     fontSize: sizes.secondary,
-    fontWeight: weights.primary,
+    fontWeight: weights.secondary,
   },
   input: {
     marginHorizontal: 20,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 10,
     borderRadius: 10,
-    fontSize: 20,
+    fontSize: sizes.small,
     color: colors.white,
   },
 });

@@ -14,7 +14,7 @@ const FormField: React.FC<Props> = ({ name, label, ...otherProps }) => {
 
   return (
     <View style={styles.container}>
-      <AppText style={styles.label}>{label}</AppText>
+      <AppText>{label}</AppText>
       <TextInput
         style={styles.input}
         onChange={() => setFieldTouched(name)}
@@ -23,7 +23,9 @@ const FormField: React.FC<Props> = ({ name, label, ...otherProps }) => {
         {...otherProps}
       />
       {touched[name] && (
-        <AppText style={{ color: colors.error }}>{errors[name]}</AppText>
+        <AppText style={{ color: colors.error, fontSize: sizes.small }}>
+          {errors[name]}
+        </AppText>
       )}
     </View>
   );
@@ -37,9 +39,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 10,
   },
-  label: {
-    fontSize: sizes.secondary,
-  },
+
   input: {
     marginVertical: 10,
     borderColor: colors.black,

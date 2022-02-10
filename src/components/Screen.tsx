@@ -2,9 +2,9 @@ import { FC } from "react";
 import { Platform, SafeAreaView, StatusBar, StyleSheet } from "react-native";
 import { colors } from "../config/variables";
 
-interface ScreenPropos {}
+interface Props {}
 
-const Screen: FC<ScreenPropos> = ({ children }) => {
+const Screen: FC<Props> = ({ children }) => {
   return <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
 };
 

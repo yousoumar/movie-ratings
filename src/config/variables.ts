@@ -10,6 +10,7 @@ export const sizes = {
   primary: 50,
   secondary: 30,
   normal: 20,
+  small: 16,
 };
 
 export const weights: { primary: "900"; secondary: "700"; normal: "400" } = {

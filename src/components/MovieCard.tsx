@@ -3,9 +3,10 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { colors, sizes, weights } from "../config/variables";
-import { MovieInterface } from "../hooks/dataApi";
+import { MovieInterface } from "../context/DataContextProvider";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 import AppText from "./AppText";
+import Rate from "./Rate";
 
 type NavigationProp = NativeStackNavigationProp<
   MoviesStackNavigatorProp,
@@ -19,7 +20,7 @@ const MovieCard: FC<MovieInterface> = ({ resume, title, rate, id }) => {
       onPress={() => navigation?.navigate("MovieDetails", { title, id })}
     >
       <View style={styles.container}>
-        <AppText style={styles.rate}>{rate} ⭐️</AppText>
+        <Rate rate={rate} />
         <Image
           style={styles.img}
           resizeMode="cover"
@@ -43,8 +44,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: colors.black,
     borderWidth: 1,
-    borderTopEndRadius: 10,
-    borderTopStartRadius: 10,
     overflow: "hidden",
   },
   content: {
@@ -59,16 +58,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     fontSize: sizes.secondary,
     fontWeight: weights.primary,
-  },
-  rate: {
-    position: "absolute",
-    height: 40,
-    backgroundColor: colors.primary,
-    fontWeight: weights.primary,
-    zIndex: 2,
-    textAlign: "center",
-    fontSize: 20,
-    padding: 5,
   },
 });
 

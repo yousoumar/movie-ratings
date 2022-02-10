@@ -3,7 +3,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { Image, ScrollView, StyleSheet } from "react-native";
 import AppText from "../components/AppText";
-import { colors, weights } from "../config/variables";
+import Rate from "../components/Rate";
 import { useDataContext } from "../context/DataContextProvider";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
@@ -16,7 +16,7 @@ const MoviesDetailsScreen: FC<Props> = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <AppText style={styles.rate}>{rate} ⭐️</AppText>
+      <Rate rate={rate} />
       <Image
         style={styles.img}
         resizeMode="cover"
@@ -42,18 +42,6 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 10,
     borderRadius: 10,
-  },
-
-  rate: {
-    position: "absolute",
-    height: 40,
-    backgroundColor: colors.primary,
-    fontWeight: weights.primary,
-    zIndex: 2,
-    textAlign: "center",
-    fontSize: 20,
-    padding: 5,
-    borderTopLeftRadius: 10,
   },
 });
 
