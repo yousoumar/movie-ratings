@@ -1,15 +1,14 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { FormikValues, useFormikContext } from "formik";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Image, Pressable, StyleSheet } from "react-native";
 import { colors } from "../config/variables";
 
 interface Props {}
 
 const AppImagePicker: FC<Props> = (props) => {
-  const [image, setImage] = useState("");
-  const { setFieldValue } = useFormikContext<FormikValues>();
+  const { setFieldValue, values } = useFormikContext<FormikValues>();
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -20,16 +19,15 @@ const AppImagePicker: FC<Props> = (props) => {
 
     if (!result.cancelled) {
       setFieldValue("image", result.uri);
-      setImage(result.uri);
     }
   };
   return (
     <Pressable style={styles.container} onPress={() => pickImage()}>
-      {!image ? (
+      {!values["image"] ? (
         <MaterialCommunityIcons name="camera" size={40} color={colors.white} />
       ) : (
         <Image
-          source={{ uri: image }}
+          source={{ uri: values["image"] }}
           style={styles.image}
           resizeMode="cover"
         />
