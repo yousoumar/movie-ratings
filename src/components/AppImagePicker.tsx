@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { FormikValues, useFormikContext } from "formik";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { Image, Pressable, StyleSheet } from "react-native";
 import { colors } from "../config/variables";
 
@@ -10,10 +10,6 @@ interface Props {}
 const AppImagePicker: FC<Props> = (props) => {
   const [image, setImage] = useState("");
   const { setFieldValue } = useFormikContext<FormikValues>();
-
-  useEffect(() => {
-    return setImage("");
-  }, []);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({

@@ -45,12 +45,11 @@ let initialData: MovieInterface[] = [
 interface Context {
   data: MovieInterface[];
   setData: React.Dispatch<React.SetStateAction<MovieInterface[]>>;
-  fetchMovieByTitle: (id: string) => MovieInterface;
+  fetchMovieByTitle: (title: string) => MovieInterface;
   addNewMovie: (
     title: string,
     rate: number,
     resume: string,
-    id: string,
     imageUri: string
   ) => boolean;
   filterMovies: (text: string) => void;
@@ -74,7 +73,6 @@ const DataContextProvider: FC = ({ children }) => {
     title: string,
     rate: number,
     resume: string,
-    id: string,
     imageUri: string
   ) => {
     if (data.some((d) => d.title === title)) {

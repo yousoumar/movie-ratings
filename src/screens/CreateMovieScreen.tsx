@@ -36,7 +36,6 @@ const CreateMovieScreen: FC<Props> = ({ navigation }) => {
               values.title,
               values.rate,
               values.resume,
-              Math.random().toString(),
               values.image
             );
             if (!result) {
