@@ -88,7 +88,9 @@ const DataContextProvider: FC = ({ children }) => {
       setData(initialData);
     } else {
       setData(
-        data.filter((d) => d.title.toLowerCase().includes(text.toLowerCase()))
+        initialData.filter((d) =>
+          d.title.toLowerCase().includes(text.toLowerCase())
+        )
       );
     }
   };
