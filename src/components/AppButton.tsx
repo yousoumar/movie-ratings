@@ -20,7 +20,7 @@ const AppButton: FC<Props> = ({
         styles.container,
 
         {
-          borderColor: outline ? colors.black : colors.primary,
+          backgroundColor: outline ? "transparent" : colors.primary,
           marginLeft: marginLeft,
         },
       ]}
@@ -32,11 +32,10 @@ const AppButton: FC<Props> = ({
 
 const styles = StyleSheet.create({
   container: {
+    borderColor: colors.primary,
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    marginTop: 30,
-    flex: 1,
   },
 });
 

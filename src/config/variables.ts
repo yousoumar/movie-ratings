@@ -1,7 +1,7 @@
 export const colors = {
   primary: "#40a857",
   white: "white",
-  black: "black",
+  black: "#080808",
   background: "#191919",
   error: "crimson",
 };

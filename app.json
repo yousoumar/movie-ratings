@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Movie Ratings",
+    "name": "MovieRatings",
     "slug": "movie-ratings",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -29,6 +27,14 @@
       "favicon": "./src/assets/favicon.png"
     },
     "description": "Movie ratings mobile application made with React Native & TypeScript.",
-    "githubUrl": "https://github.com/yousoumar/movie-ratings"
+    "githubUrl": "https://github.com/yousoumar/movie-ratings",
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you add movie images."
+        }
+      ]
+    ]
   }
 }

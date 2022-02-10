@@ -13,18 +13,16 @@ type NavigationProp = NativeStackNavigationProp<
   "MovieDetails"
 >;
 
-const MovieCard: FC<MovieInterface> = ({ resume, title, rate, id }) => {
+const MovieCard: FC<MovieInterface> = ({ resume, title, rate, imageUri }) => {
   const navigation = useNavigation<NavigationProp>();
   return (
-    <Pressable
-      onPress={() => navigation?.navigate("MovieDetails", { title, id })}
-    >
+    <Pressable onPress={() => navigation?.navigate("MovieDetails", { title })}>
       <View style={styles.container}>
         <Rate rate={rate} />
         <Image
           style={styles.img}
           resizeMode="cover"
-          source={require("../assets/movie.jpg")}
+          source={{ uri: imageUri }}
         />
 
         <View style={styles.content}>
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "100%",
-    height: 200,
+    height: 300,
   },
 
   title: {

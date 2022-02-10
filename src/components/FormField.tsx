@@ -2,6 +2,7 @@ import { FormikValues, useFormikContext } from "formik";
 import React from "react";
 import { StyleSheet, TextInput, TextInputProps, View } from "react-native";
 import { colors, sizes } from "../config/variables";
+import AppImagePicker from "./AppImagePicker";
 import AppText from "./AppText";
 
 interface Props extends TextInputProps {
@@ -14,14 +15,22 @@ const FormField: React.FC<Props> = ({ name, label, ...otherProps }) => {
 
   return (
     <View style={styles.container}>
-      <AppText>{label}</AppText>
-      <TextInput
-        style={styles.input}
-        onChange={() => setFieldTouched(name)}
-        onChangeText={(text) => setFieldValue(name, text)}
-        value={values[name].toString()}
-        {...otherProps}
-      />
+      {name === "image" ? (
+        <AppImagePicker />
+      ) : (
+        <TextInput
+          placeholderTextColor={colors.white}
+          placeholder={label}
+          style={styles.input}
+          onChangeText={(text) => {
+            setFieldTouched(name);
+            setFieldValue(name, text);
+          }}
+          value={values[name]}
+          {...otherProps}
+        />
+      )}
+
       {touched[name] && (
         <AppText style={{ color: colors.error, fontSize: sizes.small }}>
           {errors[name]}
@@ -42,8 +51,7 @@ const styles = StyleSheet.create({
 
   input: {
     marginVertical: 10,
-    borderColor: colors.black,
-    borderWidth: 1,
+    backgroundColor: colors.black,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 10,

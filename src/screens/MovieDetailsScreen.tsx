@@ -11,17 +11,13 @@ type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "MovieDetails">;
 
 const MoviesDetailsScreen: FC<Props> = () => {
   const route = useRoute<Props["route"]>();
-  const { fetchMovieById } = useDataContext();
-  const { rate, resume } = fetchMovieById(route.params.id);
+  const { fetchMovieByTitle } = useDataContext();
+  const { rate, resume, imageUri } = fetchMovieByTitle(route.params.title);
 
   return (
     <ScrollView style={styles.container}>
       <Rate rate={rate} />
-      <Image
-        style={styles.img}
-        resizeMode="cover"
-        source={require("../assets/movie.jpg")}
-      />
+      <Image style={styles.img} resizeMode="cover" source={{ uri: imageUri }} />
 
       <AppText>{resume}</AppText>
     </ScrollView>
@@ -40,6 +36,7 @@ const styles = StyleSheet.create({
 
   img: {
     width: "100%",
+    height: 500,
     marginBottom: 10,
     borderRadius: 10,
   },

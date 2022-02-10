@@ -9,7 +9,7 @@ interface Props {}
 
 export type MoviesStackNavigatorProp = {
   Movies: undefined;
-  MovieDetails: { title: string; id: string };
+  MovieDetails: { title: string };
   CreateMovie: undefined;
 };
 
