@@ -1,9 +1,10 @@
 import { useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC } from "react";
-import { Image, ScrollView, StyleSheet } from "react-native";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import Rate from "../components/Rate";
+import { colors } from "../config/variables";
 import { useDataContext } from "../context/DataContextProvider";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
@@ -15,11 +16,17 @@ const MoviesDetailsScreen: FC<Props> = () => {
   const { rate, resume, imageUri } = fetchMovieByTitle(route.params.title);
 
   return (
-    <ScrollView style={styles.container}>
-      <Rate rate={rate} />
-      <Image style={styles.img} resizeMode="cover" source={{ uri: imageUri }} />
+    <ScrollView>
+      <View style={styles.container}>
+        <Rate rate={rate} />
+        <Image
+          style={styles.img}
+          resizeMode="cover"
+          source={{ uri: imageUri }}
+        />
 
-      <AppText>{resume}</AppText>
+        <AppText style={styles.text}>{resume}</AppText>
+      </View>
     </ScrollView>
   );
 };
@@ -32,13 +39,17 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 10,
     borderTopStartRadius: 10,
     overflow: "hidden",
+    backgroundColor: colors.black,
   },
 
   img: {
     width: "100%",
     height: 500,
-    marginBottom: 10,
     borderRadius: 10,
+  },
+
+  text: {
+    margin: 16,
   },
 });
 

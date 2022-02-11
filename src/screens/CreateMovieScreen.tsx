@@ -10,7 +10,7 @@ import { useDataContext } from "../context/DataContextProvider";
 import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required().min(4).label("Title"),
+  title: Yup.string().required().min(2).label("Title"),
   resume: Yup.string().required().min(30).label("Resume"),
   rate: Yup.number().required().min(1).label("Rate"),
   image: Yup.string().required().min(30).label("Image"),

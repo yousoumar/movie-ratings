@@ -13,7 +13,7 @@ type NavigationProp = NativeStackNavigationProp<
   "MovieDetails"
 >;
 
-const MovieCard: FC<MovieInterface> = ({ resume, title, rate, imageUri }) => {
+const MovieCard: FC<MovieInterface> = ({ title, rate, imageUri }) => {
   const navigation = useNavigation<NavigationProp>();
   return (
     <Pressable onPress={() => navigation?.navigate("MovieDetails", { title })}>
@@ -29,7 +29,6 @@ const MovieCard: FC<MovieInterface> = ({ resume, title, rate, imageUri }) => {
           <AppText style={styles.title} numberOfLines={1}>
             {title}
           </AppText>
-          <AppText numberOfLines={1}>{resume}</AppText>
         </View>
       </View>
     </Pressable>
@@ -40,8 +39,7 @@ const styles = StyleSheet.create({
   container: {
     margin: 10,
     borderRadius: 10,
-    borderColor: colors.black,
-    borderWidth: 1,
+    backgroundColor: colors.black,
     overflow: "hidden",
   },
   content: {
@@ -49,11 +47,10 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "100%",
-    height: 300,
+    height: 200,
   },
 
   title: {
-    marginVertical: 10,
     fontSize: sizes.secondary,
     fontWeight: weights.primary,
   },

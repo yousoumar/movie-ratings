@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Pressable, PressableProps, StyleSheet } from "react-native";
-import { colors } from "../config/variables";
+import { colors, sizes } from "../config/variables";
 import AppText from "./AppText";
 
 interface Props extends PressableProps {
@@ -25,7 +25,7 @@ const AppButton: FC<Props> = ({
         },
       ]}
     >
-      <AppText>{children}</AppText>
+      <AppText style={{ fontSize: sizes.small }}>{children}</AppText>
     </Pressable>
   );
 };
