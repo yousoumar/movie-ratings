@@ -38,7 +38,7 @@ const AppImagePicker: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.card,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,

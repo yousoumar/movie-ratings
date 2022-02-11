@@ -18,14 +18,15 @@ const MoviesDetailsScreen: FC<Props> = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Rate rate={rate} />
         <Image
           style={styles.img}
           resizeMode="cover"
           source={{ uri: imageUri }}
         />
-
-        <AppText style={styles.text}>{resume}</AppText>
+        <View style={styles.content}>
+          <Rate rate={rate} />
+          <AppText>{resume}</AppText>
+        </View>
       </View>
     </ScrollView>
   );
@@ -39,17 +40,15 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 10,
     borderTopStartRadius: 10,
     overflow: "hidden",
-    backgroundColor: colors.black,
+    backgroundColor: colors.card,
   },
-
+  content: {
+    margin: 16,
+  },
   img: {
     width: "100%",
     height: 500,
     borderRadius: 10,
-  },
-
-  text: {
-    margin: 16,
   },
 });
 

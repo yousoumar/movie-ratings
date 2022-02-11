@@ -6,10 +6,12 @@ import AppText from "./AppText";
 interface Props extends PressableProps {
   outline?: boolean;
   marginLeft?: number;
+  marginTop?: number;
 }
 const AppButton: FC<Props> = ({
   children,
   outline = false,
+  marginTop = 0,
   marginLeft = 0,
   ...others
 }) => {
@@ -20,8 +22,9 @@ const AppButton: FC<Props> = ({
         styles.container,
 
         {
-          backgroundColor: outline ? "transparent" : colors.primary,
-          marginLeft: marginLeft,
+          backgroundColor: outline ? "transparent" : colors.card,
+          marginLeft,
+          marginTop,
         },
       ]}
     >
@@ -32,10 +35,10 @@ const AppButton: FC<Props> = ({
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: colors.primary,
+    borderColor: colors.card,
     borderWidth: 1,
     borderRadius: 10,
-    padding: 10,
+    padding: 16,
   },
 });
 

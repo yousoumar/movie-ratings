@@ -18,7 +18,6 @@ const MovieCard: FC<MovieInterface> = ({ title, rate, imageUri }) => {
   return (
     <Pressable onPress={() => navigation?.navigate("MovieDetails", { title })}>
       <View style={styles.container}>
-        <Rate rate={rate} />
         <Image
           style={styles.img}
           resizeMode="cover"
@@ -29,6 +28,7 @@ const MovieCard: FC<MovieInterface> = ({ title, rate, imageUri }) => {
           <AppText style={styles.title} numberOfLines={1}>
             {title}
           </AppText>
+          <Rate rate={rate} />
         </View>
       </View>
     </Pressable>
@@ -39,14 +39,14 @@ const styles = StyleSheet.create({
   container: {
     margin: 10,
     borderRadius: 10,
-    backgroundColor: colors.black,
-    overflow: "hidden",
+    backgroundColor: colors.card,
   },
   content: {
     padding: 10,
   },
   img: {
     width: "100%",
+    borderRadius: 10,
     height: 200,
   },
 

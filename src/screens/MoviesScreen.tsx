@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   input: {
     marginHorizontal: 20,
     marginVertical: 10,
-    backgroundColor: colors.black,
+    backgroundColor: colors.card,
     padding: 10,
     borderRadius: 10,
     fontSize: sizes.small,

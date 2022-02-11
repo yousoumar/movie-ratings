@@ -1,9 +1,9 @@
 export const colors = {
-  primary: "#40a857",
+  primary: "#FFD369",
   white: "white",
-  black: "#080808",
-  background: "#191919",
-  error: "crimson",
+  card: "#1e2126",
+  background: "#222831",
+  error: "#C84B31",
 };
 
 export const sizes = {

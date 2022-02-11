@@ -44,14 +44,14 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 15,
     borderWidth: 1,
-    borderColor: colors.black,
+    borderColor: colors.card,
     padding: 16,
     borderRadius: 10,
   },
 
   input: {
     marginVertical: 10,
-    backgroundColor: colors.black,
+    backgroundColor: colors.card,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 10,
