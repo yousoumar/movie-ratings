@@ -2,7 +2,7 @@ export const colors = {
   primary: "#FFD369",
   white: "white",
   card: "#1e2126",
-  background: "#222831",
+  black: "#222831",
   error: "#C84B31",
 };
 
@@ -23,8 +23,8 @@ export const navigatorTheme = {
   dark: false,
   colors: {
     primary: colors.primary,
-    background: colors.background,
-    card: colors.background,
+    background: colors.black,
+    card: colors.black,
     text: colors.white,
     border: colors.primary,
     notification: colors.primary,

@@ -7,14 +7,14 @@ import MoviesScreen from "../screens/MoviesScreen";
 
 interface Props {}
 
-export type MoviesStackNavigatorProp = {
+export type MoviesStackNavigatorProps = {
   Movies: undefined;
   MovieDetails: { title: string };
   CreateMovie: undefined;
 };
 
-const MoviesStackNavigator: FC<Props> = () => {
-  const Stack = createNativeStackNavigator<MoviesStackNavigatorProp>();
+const MoviesNavigator: FC<Props> = () => {
+  const Stack = createNativeStackNavigator<MoviesStackNavigatorProps>();
   return (
     <Stack.Navigator
       screenOptions={{
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default MoviesStackNavigator;
+export default MoviesNavigator;

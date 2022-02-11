@@ -6,9 +6,9 @@ import AppText from "../components/AppText";
 import Rate from "../components/Rate";
 import { colors } from "../config/variables";
 import { useDataContext } from "../context/DataContextProvider";
-import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
+import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 
-type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "MovieDetails">;
+type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "MovieDetails">;
 
 const MoviesDetailsScreen: FC<Props> = () => {
   const route = useRoute<Props["route"]>();

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Pressable, PressableProps, StyleSheet } from "react-native";
-import { colors, sizes } from "../config/variables";
+import { colors, sizes, weights } from "../config/variables";
 import AppText from "./AppText";
 
 interface Props extends PressableProps {
@@ -22,23 +22,35 @@ const AppButton: FC<Props> = ({
         styles.container,
 
         {
-          backgroundColor: outline ? "transparent" : colors.card,
+          backgroundColor: outline ? "transparent" : colors.primary,
           marginLeft,
           marginTop,
         },
       ]}
     >
-      <AppText style={{ fontSize: sizes.small }}>{children}</AppText>
+      <AppText
+        style={[
+          styles.text,
+          { color: outline ? colors.primary : colors.black },
+        ]}
+      >
+        {children}
+      </AppText>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: colors.card,
+    borderColor: colors.primary,
     borderWidth: 1,
     borderRadius: 10,
-    padding: 16,
+    padding: 10,
+  },
+  text: {
+    fontSize: sizes.small,
+    textAlign: "center",
+    fontWeight: weights.secondary,
   },
 });
 

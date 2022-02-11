@@ -6,11 +6,11 @@ import { StyleSheet } from "react-native";
 import { navigatorTheme, weights } from "../config/variables";
 import AccountScreen from "../screens/AccountScreen";
 import CreateMovieScreen from "../screens/CreateMovieScreen";
-import MoviesStackNavigator from "./MoviesStackNavigator";
+import MoviesNavigator from "./MoviesNavigator";
 
 interface Props {}
 
-const AppTabNavigator: FC<Props> = (props) => {
+const AppNavigator: FC<Props> = (props) => {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -26,7 +26,7 @@ const AppTabNavigator: FC<Props> = (props) => {
       >
         <Tab.Screen
           name="Movies List"
-          component={MoviesStackNavigator}
+          component={MoviesNavigator}
           options={{
             tabBarLabel: "Movies",
             tabBarIcon: ({ color, size, focused }) => (
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default AppTabNavigator;
+export default AppNavigator;

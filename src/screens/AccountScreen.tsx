@@ -1,6 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
+import { useLoginContext } from "../../App";
 import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
 import Screen from "../components/Screen";
@@ -9,6 +10,7 @@ import { colors } from "../config/variables";
 interface Props {}
 
 const AccountScreen: FC<Props> = (props) => {
+  const { user, logout } = useLoginContext();
   return (
     <Screen>
       <View style={styles.container}>
@@ -18,9 +20,13 @@ const AccountScreen: FC<Props> = (props) => {
             color={colors.white}
             size={70}
           />
-          <AppText style={styles.text}>Antoine Huon</AppText>
+          <AppText numberOfLines={1} style={styles.text}>
+            {user?.email}
+          </AppText>
         </View>
-        <AppButton>Logout</AppButton>
+        <AppButton outline onPress={() => logout()}>
+          Logout
+        </AppButton>
       </View>
     </Screen>
   );

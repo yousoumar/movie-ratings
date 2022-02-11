@@ -7,7 +7,7 @@ import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
 import Screen from "../components/Screen";
 import { useDataContext } from "../context/DataContextProvider";
-import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
+import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(2).label("Title"),
@@ -16,7 +16,7 @@ const validationSchema = Yup.object().shape({
   image: Yup.string().required().min(30).label("Image"),
 });
 
-type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "CreateMovie">;
+type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "CreateMovie">;
 
 const CreateMovieScreen: FC<Props> = ({ navigation }) => {
   const { addNewMovie, flatListRef } = useDataContext();

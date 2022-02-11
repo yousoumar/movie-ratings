@@ -6,9 +6,9 @@ import MovieCard from "../components/MovieCard";
 import Screen from "../components/Screen";
 import { colors, sizes } from "../config/variables";
 import { useDataContext } from "../context/DataContextProvider";
-import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
+import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 
-type Props = NativeStackScreenProps<MoviesStackNavigatorProp, "Movies">;
+type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "Movies">;
 
 const MoviesScreen: FC<Props> = () => {
   const { data, filterMovies, flatListRef } = useDataContext();

@@ -4,12 +4,12 @@ import React, { FC } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { colors, sizes, weights } from "../config/variables";
 import { MovieInterface } from "../context/DataContextProvider";
-import { MoviesStackNavigatorProp } from "../navigators/MoviesStackNavigator";
+import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 import AppText from "./AppText";
 import Rate from "./Rate";
 
 type NavigationProp = NativeStackNavigationProp<
-  MoviesStackNavigatorProp,
+  MoviesStackNavigatorProps,
   "MovieDetails"
 >;
 
