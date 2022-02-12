@@ -21,7 +21,7 @@ const StatusInfo: FC<Props> = ({ isContainData }) => {
   }
   return (
     <View style={styles.container}>
-      <AppText style={styles.text}>There no match for you search.</AppText>
+      <AppText style={styles.text}>There no match for your search.</AppText>
     </View>
   );
 };

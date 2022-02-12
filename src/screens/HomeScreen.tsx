@@ -13,11 +13,24 @@ const HomeScreen: FC<Props> = ({ navigation }) => {
   const { user } = useAuthContext()!;
   return (
     <ImageBackground
-      style={styles.black}
+      style={styles.blackground}
       resizeMode="cover"
       source={require("../assets/splash.png")}
     >
-      {user && <AppText style={styles.text}>Hello {user.name}</AppText>}
+      {user && (
+        <View style={styles.textBox}>
+          <AppText>hello </AppText>
+          <AppText
+            style={{
+              color: colors.primary,
+              fontWeight: weights.primary,
+              textTransform: "uppercase",
+            }}
+          >
+            {user.name.split(" ")[0]}
+          </AppText>
+        </View>
+      )}
       <View style={styles.buttons}>
         {!user && (
           <AppButton onPress={() => navigation.navigate("Register")}>
@@ -27,7 +40,6 @@ const HomeScreen: FC<Props> = ({ navigation }) => {
         {user && (
           <AppButton
             marginTop={30}
-            outline
             onPress={() => navigation.navigate("Login")}
           >
             Login
@@ -39,18 +51,19 @@ const HomeScreen: FC<Props> = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  black: {
-    width: "100%",
-    height: "100%",
+  blackground: {
+    flex: 1,
+    borderWidth: 1,
   },
   buttons: {
     marginBottom: 30,
     padding: 16,
     marginTop: "auto",
   },
-  text: {
+  textBox: {
     marginTop: "auto",
-    textAlign: "center",
+    flexDirection: "row",
+    justifyContent: "center",
     fontWeight: weights.primary,
     color: colors.primary,
   },

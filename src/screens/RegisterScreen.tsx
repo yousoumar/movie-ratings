@@ -34,15 +34,12 @@ const RegisterScreen: FC<Props> = () => {
       >
         {({ handleSubmit }) => (
           <>
-            <FormField
-              name="name"
-              label="Name"
-              autoCapitalize="words"
-            ></FormField>
+            <FormField name="name" label="Name"></FormField>
             <FormField
               name="email"
               autoCapitalize="none"
               label="Email"
+              keyboardType="email-address"
             ></FormField>
             <FormField
               name="password"
@@ -50,11 +47,7 @@ const RegisterScreen: FC<Props> = () => {
               secureTextEntry={true}
             ></FormField>
 
-            <AppButton
-              outline
-              onPress={() => handleSubmit()}
-              disabled={isRegistering}
-            >
+            <AppButton onPress={() => handleSubmit()} disabled={isRegistering}>
               Register
             </AppButton>
           </>

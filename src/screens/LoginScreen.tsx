@@ -30,7 +30,6 @@ const LoginScreen: FC<Props> = (props) => {
             setIsLogin(false);
           } else {
             setIsLogged(true);
-            setIsLogin(false);
           }
         }}
         validationSchema={validationSchema}
@@ -43,11 +42,7 @@ const LoginScreen: FC<Props> = (props) => {
               secureTextEntry={true}
             ></FormField>
 
-            <AppButton
-              outline
-              onPress={() => handleSubmit()}
-              disabled={isLogin}
-            >
+            <AppButton onPress={() => handleSubmit()} disabled={isLogin}>
               {isLogin ? "...." : "Login"}
             </AppButton>
           </>

@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { FC } from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
 import Screen from "../components/Screen";
@@ -10,32 +10,56 @@ import { useDataContext } from "../contexts/DataContext";
 
 interface Props {}
 
-const AccountScreen: FC<Props> = (props) => {
+const AccountScreen: FC<Props> = () => {
   const { user, logout, deleteAccount } = useAuthContext()!;
   const { removeData } = useDataContext()!;
   return (
     <Screen>
       <View style={styles.container}>
-        <View style={styles.top}>
+        <View style={styles.row}>
           <MaterialCommunityIcons
             name="account-circle"
             color={colors.white}
-            size={70}
+            size={30}
           />
           <AppText numberOfLines={1} style={styles.text}>
-            {user?.name}
+            {user?.name.toLowerCase()}
+          </AppText>
+        </View>
+        <View style={styles.row}>
+          <MaterialCommunityIcons name="email" color={colors.white} size={30} />
+          <AppText numberOfLines={1} style={styles.text}>
+            {user?.email.toLowerCase()}
+          </AppText>
+        </View>
+        <View style={styles.row}>
+          <MaterialCommunityIcons name="lock" color={colors.white} size={30} />
+          <AppText numberOfLines={1} style={styles.text}>
+            *****************
           </AppText>
         </View>
         <AppButton
           outline
           onPress={() => {
-            deleteAccount();
-            removeData();
+            Alert.alert(
+              "You wanna delete your account ?",
+              "This acction is irreversible.",
+              [
+                {
+                  text: "Yes",
+                  onPress: () => {
+                    deleteAccount();
+                    removeData();
+                  },
+                },
+                { text: "No", style: "cancel" },
+              ]
+            );
           }}
         >
           Delete
         </AppButton>
-        <AppButton marginTop={30} onPress={() => logout()}>
+        <AppButton outline marginTop={30} onPress={() => logout()}>
           Logout
         </AppButton>
       </View>
@@ -48,7 +72,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 
-  top: {
+  row: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: colors.card,

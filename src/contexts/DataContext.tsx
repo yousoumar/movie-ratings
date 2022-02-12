@@ -19,6 +19,9 @@ export interface MovieInterface {
 
 interface DataContextType {
   data: MovieInterface[];
+  flatListRef: RefObject<FlatList<MovieInterface>>;
+  isContainData: boolean;
+  isLoading: boolean;
   setData: React.Dispatch<React.SetStateAction<MovieInterface[]>>;
   fetchMovieByTitle: (title: string) => MovieInterface;
   addNewMovie: (
@@ -28,9 +31,6 @@ interface DataContextType {
     imageUri: string
   ) => boolean;
   filterMovies: (text: string) => void;
-  flatListRef: RefObject<FlatList<MovieInterface>>;
-  isContainData: boolean;
-  isLoading: boolean;
   removeData: () => void;
 }
 
@@ -41,19 +41,25 @@ export const useDataContext = () => {
 
 const DataContextProvider: FC = ({ children }) => {
   const [initialData, setInitialData] = useState<MovieInterface[]>([]);
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState<MovieInterface[]>([]);
   const [isContainData, setIsContainData] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const flatListRef = useRef<FlatList>(null);
+  const flatListRef = useRef<FlatList<MovieInterface>>(null);
 
   const getStoredData = async () => {
-    const stringData = await AsyncStorage.getItem("data");
-    if (stringData) {
-      setInitialData(JSON.parse(stringData));
-      setData(JSON.parse(stringData));
+    try {
+      const stringData = await AsyncStorage.getItem("data");
+      if (stringData) {
+        const data = JSON.parse(stringData);
+        setInitialData(data);
+        setData(data);
+      }
+      setIsLoading(false);
+    } catch (e) {
+      console.log(e);
     }
-    setIsLoading(false);
   };
+
   useEffect(() => {
     getStoredData();
   }, []);
@@ -118,8 +124,8 @@ const DataContextProvider: FC = ({ children }) => {
         filterMovies,
         flatListRef,
         isContainData,
-        isLoading,
         removeData,
+        isLoading,
       }}
     >
       {children}

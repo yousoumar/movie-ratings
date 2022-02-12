@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { FlatList, StyleSheet, TextInput } from "react-native";
+import Loader from "../components/Loader";
 import MovieCard from "../components/MovieCard";
 import Screen from "../components/Screen";
 import StatusInfo from "../components/StatusInfo";
@@ -15,7 +16,7 @@ const MoviesScreen: FC<Props> = () => {
     useDataContext()!;
 
   if (isLoading) {
-    <StatusInfo isContainData={false} />;
+    return <Loader />;
   }
   return (
     <Screen>

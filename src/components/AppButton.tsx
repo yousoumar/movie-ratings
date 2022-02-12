@@ -22,27 +22,19 @@ const AppButton: FC<Props> = ({
         styles.container,
 
         {
-          backgroundColor: outline ? "transparent" : colors.primary,
+          borderColor: outline ? colors.card : colors.primary,
           marginLeft,
           marginTop,
         },
       ]}
     >
-      <AppText
-        style={[
-          styles.text,
-          { color: outline ? colors.primary : colors.black },
-        ]}
-      >
-        {children}
-      </AppText>
+      <AppText style={styles.text}>{children}</AppText>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: colors.primary,
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
