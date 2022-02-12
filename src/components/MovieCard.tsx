@@ -3,7 +3,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { colors, sizes, weights } from "../config/variables";
-import { MovieInterface } from "../context/DataContextProvider";
+import { MovieInterface } from "../contexts/DataContext";
 import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 import AppText from "./AppText";
 import Rate from "./Rate";

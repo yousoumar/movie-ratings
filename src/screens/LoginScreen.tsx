@@ -2,9 +2,9 @@ import { Formik } from "formik";
 import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
-import { useLoginContext } from "../../App";
 import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
+import { useAuthContext } from "../contexts/AuthContext";
 
 interface Props {}
 
@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen: FC<Props> = (props) => {
-  const { registerAndLogin } = useLoginContext();
+  const { registerAndLogin, setUser } = useAuthContext()!;
   return (
     <View style={styles.container}>
       <Formik
@@ -23,7 +23,7 @@ const LoginScreen: FC<Props> = (props) => {
           password: "",
         }}
         onSubmit={(values) => {
-          registerAndLogin(values);
+          registerAndLogin(values, setUser);
         }}
         validationSchema={validationSchema}
       >

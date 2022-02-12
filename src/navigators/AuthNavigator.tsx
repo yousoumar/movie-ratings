@@ -8,13 +8,13 @@ import RegisterScreen from "../screens/RegisterScreen";
 
 interface Props {}
 
-export type AutenticationNavigatorProps = {
+export type AuthNavigatorProps = {
   Home: undefined;
   Register: undefined;
   Login: undefined;
 };
 const AuthenticationNavigator: FC<Props> = () => {
-  const Stack = createNativeStackNavigator<AutenticationNavigatorProps>();
+  const Stack = createNativeStackNavigator<AuthNavigatorProps>();
   return (
     <NavigationContainer theme={navigatorTheme}>
       <Stack.Navigator

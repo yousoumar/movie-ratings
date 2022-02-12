@@ -1,16 +1,16 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
-import { useLoginContext } from "../../App";
 import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
 import Screen from "../components/Screen";
 import { colors } from "../config/variables";
+import { useAuthContext } from "../contexts/AuthContext";
 
 interface Props {}
 
 const AccountScreen: FC<Props> = (props) => {
-  const { user, logout } = useLoginContext();
+  const { user, logout, setUser } = useAuthContext()!;
   return (
     <Screen>
       <View style={styles.container}>
@@ -24,7 +24,7 @@ const AccountScreen: FC<Props> = (props) => {
             {user?.email}
           </AppText>
         </View>
-        <AppButton outline onPress={() => logout()}>
+        <AppButton outline onPress={() => logout(setUser)}>
           Logout
         </AppButton>
       </View>

@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
 import Screen from "../components/Screen";
-import { useDataContext } from "../context/DataContextProvider";
+import { useDataContext } from "../contexts/DataContext";
 import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 
 const validationSchema = Yup.object().shape({
@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
 type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "CreateMovie">;
 
 const CreateMovieScreen: FC<Props> = ({ navigation }) => {
-  const { addNewMovie, flatListRef } = useDataContext();
+  const { addNewMovie, flatListRef } = useDataContext()!;
 
   return (
     <Screen>

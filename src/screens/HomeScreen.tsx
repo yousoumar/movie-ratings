@@ -2,9 +2,9 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import AppButton from "../components/AppButton";
-import { AutenticationNavigatorProps } from "../navigators/AuthenticationNavigator";
+import { AuthNavigatorProps } from "../navigators/AuthNavigator";
 
-type Props = NativeStackScreenProps<AutenticationNavigatorProps, "Home">;
+type Props = NativeStackScreenProps<AuthNavigatorProps, "Home">;
 
 const HomeScreen: FC<Props> = ({ navigation }) => {
   return (
