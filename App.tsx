@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AuthContext, User } from "./src/contexts/AuthContext";
 import DataContext from "./src/contexts/DataContext";
 import AppNavigator from "./src/navigators/AppNavigator";
-import AuthnNavigator from "./src/navigators/AuthNavigator";
+import AuthNavigator from "./src/navigators/AuthNavigator";
 
 export default function App() {
   const [user, setUser] = useState<User>(null);
@@ -91,7 +91,7 @@ export default function App() {
           setIsLogged,
         }}
       >
-        {isLogged ? <AppNavigator /> : <AuthnNavigator />}
+        {isLogged ? <AppNavigator /> : <AuthNavigator />}
       </AuthContext.Provider>
     </DataContext>
   );
