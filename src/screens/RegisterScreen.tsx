@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 import AppButton from "../components/AppButton";
@@ -17,6 +17,7 @@ const validationSchema = Yup.object().shape({
 const RegisterScreen: FC<Props> = () => {
   const { register } = useAuthContext()!;
 
+  const [isRegistering, setIsRegistering] = useState(false);
   return (
     <View style={styles.container}>
       <Formik
@@ -26,6 +27,7 @@ const RegisterScreen: FC<Props> = () => {
           name: "",
         }}
         onSubmit={async (values) => {
+          setIsRegistering(true);
           await register(values);
         }}
         validationSchema={validationSchema}
@@ -48,7 +50,11 @@ const RegisterScreen: FC<Props> = () => {
               secureTextEntry={true}
             ></FormField>
 
-            <AppButton outline onPress={() => handleSubmit()}>
+            <AppButton
+              outline
+              onPress={() => handleSubmit()}
+              disabled={isRegistering}
+            >
               Register
             </AppButton>
           </>
