@@ -4,11 +4,11 @@ import { weights } from "../config/variables";
 import AppText from "./AppText";
 
 interface Props {
-  searched: boolean;
+  isContainData: boolean;
 }
 
-const NotFound: FC<Props> = ({ searched }) => {
-  if (!searched) {
+const StatusInfo: FC<Props> = ({ isContainData }) => {
+  if (!isContainData) {
     return (
       <View style={styles.container}>
         <Image
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NotFound;
+export default StatusInfo;

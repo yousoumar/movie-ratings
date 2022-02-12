@@ -1,9 +1,9 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { FlatList, StyleSheet, TextInput } from "react-native";
 import MovieCard from "../components/MovieCard";
-import NotFound from "../components/NotFound";
 import Screen from "../components/Screen";
+import StatusInfo from "../components/StatusInfo";
 import { colors, sizes, weights } from "../config/variables";
 import { useDataContext } from "../contexts/DataContext";
 import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
@@ -11,9 +11,12 @@ import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "Movies">;
 
 const MoviesScreen: FC<Props> = () => {
-  const { data, filterMovies, flatListRef, isContainData } = useDataContext()!;
-  const [searched, setSearched] = useState(false);
+  const { data, filterMovies, flatListRef, isContainData, isLoading } =
+    useDataContext()!;
 
+  if (isLoading) {
+    <StatusInfo isContainData={false} />;
+  }
   return (
     <Screen>
       <TextInput
@@ -25,7 +28,6 @@ const MoviesScreen: FC<Props> = () => {
         placeholderTextColor={colors.white}
         onChangeText={(text) => {
           filterMovies(text);
-          setSearched(!searched);
         }}
       />
       <FlatList
@@ -33,7 +35,7 @@ const MoviesScreen: FC<Props> = () => {
         data={data}
         renderItem={(item) => <MovieCard {...item.item} />}
         keyExtractor={(item) => item.title}
-        ListEmptyComponent={() => <NotFound searched={searched} />}
+        ListEmptyComponent={() => <StatusInfo isContainData={isContainData} />}
       />
     </Screen>
   );
