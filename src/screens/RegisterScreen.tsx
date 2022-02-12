@@ -9,12 +9,13 @@ import { useAuthContext } from "../contexts/AuthContext";
 interface Props {}
 
 const validationSchema = Yup.object().shape({
+  name: Yup.string().required().label("Name"),
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(6).label("Password"),
 });
 
 const RegisterScreen: FC<Props> = () => {
-  const { registerAndLogin, setUser } = useAuthContext()!;
+  const { register } = useAuthContext()!;
 
   return (
     <View style={styles.container}>
@@ -22,14 +23,20 @@ const RegisterScreen: FC<Props> = () => {
         initialValues={{
           email: "",
           password: "",
+          name: "",
         }}
         onSubmit={async (values) => {
-          await registerAndLogin(values, setUser);
+          await register(values);
         }}
         validationSchema={validationSchema}
       >
         {({ handleSubmit }) => (
           <>
+            <FormField
+              name="name"
+              label="Name"
+              autoCapitalize="words"
+            ></FormField>
             <FormField
               name="email"
               autoCapitalize="none"

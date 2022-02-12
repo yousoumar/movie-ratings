@@ -31,6 +31,7 @@ interface DataContextType {
   flatListRef: RefObject<FlatList<MovieInterface>>;
   isContainData: boolean;
   isLoading: boolean;
+  removeData: () => void;
 }
 
 const DataContext = createContext<DataContextType | null>(null);
@@ -76,10 +77,14 @@ const DataContextProvider: FC = ({ children }) => {
     }
     setData([{ title, rate, resume, imageUri }, ...data]);
     setInitialData([{ title, rate, resume, imageUri }, ...initialData]);
-    AsyncStorage.setItem(
-      "data",
-      JSON.stringify([{ title, rate, resume, imageUri }, ...initialData])
-    );
+    try {
+      AsyncStorage.setItem(
+        "data",
+        JSON.stringify([{ title, rate, resume, imageUri }, ...initialData])
+      );
+    } catch (e) {
+      console.log(e);
+    }
     setIsContainData(true);
     return true;
   };
@@ -96,6 +101,13 @@ const DataContextProvider: FC = ({ children }) => {
     }
   };
 
+  const removeData = async () => {
+    setInitialData([]);
+    setData([]);
+    setIsContainData(false);
+    await AsyncStorage.removeItem("data");
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -107,6 +119,7 @@ const DataContextProvider: FC = ({ children }) => {
         flatListRef,
         isContainData,
         isLoading,
+        removeData,
       }}
     >
       {children}

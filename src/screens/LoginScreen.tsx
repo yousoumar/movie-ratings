@@ -9,31 +9,30 @@ import { useAuthContext } from "../contexts/AuthContext";
 interface Props {}
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(6).label("Password"),
+  password: Yup.string().required().label("Password"),
 });
 
 const LoginScreen: FC<Props> = (props) => {
-  const { registerAndLogin, setUser } = useAuthContext()!;
+  const { login, setIsLogged } = useAuthContext()!;
   return (
     <View style={styles.container}>
       <Formik
         initialValues={{
-          email: "",
           password: "",
         }}
-        onSubmit={(values) => {
-          registerAndLogin(values, setUser);
+        onSubmit={async (values, { setErrors }) => {
+          const result = await login(values.password);
+
+          if (!result) {
+            setErrors({ password: "Password incorect" });
+          } else {
+            setIsLogged(true);
+          }
         }}
         validationSchema={validationSchema}
       >
         {({ handleSubmit, resetForm }) => (
           <>
-            <FormField
-              name="email"
-              autoCapitalize="none"
-              label="Email"
-            ></FormField>
             <FormField
               name="password"
               label="Password"

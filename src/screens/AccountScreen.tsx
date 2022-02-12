@@ -6,11 +6,13 @@ import AppText from "../components/AppText";
 import Screen from "../components/Screen";
 import { colors } from "../config/variables";
 import { useAuthContext } from "../contexts/AuthContext";
+import { useDataContext } from "../contexts/DataContext";
 
 interface Props {}
 
 const AccountScreen: FC<Props> = (props) => {
-  const { user, logout, setUser } = useAuthContext()!;
+  const { user, logout, deleteAccount } = useAuthContext()!;
+  const { removeData } = useDataContext()!;
   return (
     <Screen>
       <View style={styles.container}>
@@ -21,10 +23,19 @@ const AccountScreen: FC<Props> = (props) => {
             size={70}
           />
           <AppText numberOfLines={1} style={styles.text}>
-            {user?.email}
+            {user?.name}
           </AppText>
         </View>
-        <AppButton outline onPress={() => logout(setUser)}>
+        <AppButton
+          outline
+          onPress={() => {
+            deleteAccount();
+            removeData();
+          }}
+        >
+          Delete
+        </AppButton>
+        <AppButton marginTop={30} onPress={() => logout()}>
           Logout
         </AppButton>
       </View>
