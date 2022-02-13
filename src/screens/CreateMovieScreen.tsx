@@ -12,7 +12,7 @@ import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(2).label("Title"),
   resume: Yup.string().required().min(30).label("Resume"),
-  rate: Yup.number().required().min(1).label("Rate"),
+  rate: Yup.number().required().min(1).max(5).label("Rate"),
   image: Yup.string().required().min(30).label("Image"),
 });
 
