@@ -12,6 +12,13 @@ const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(6).label("Password"),
+  passwordConfirm: Yup.string().test(
+    "passwords-match",
+    "Passwords must match",
+    function (value) {
+      return this.parent.password === value;
+    }
+  ),
 });
 
 const RegisterScreen: FC<Props> = () => {
@@ -24,6 +31,7 @@ const RegisterScreen: FC<Props> = () => {
         initialValues={{
           email: "",
           password: "",
+          passwordConfirm: "",
           name: "",
         }}
         onSubmit={async (values) => {
@@ -34,7 +42,12 @@ const RegisterScreen: FC<Props> = () => {
       >
         {({ handleSubmit }) => (
           <>
-            <FormField name="name" label="Name"></FormField>
+            <FormField
+              name="name"
+              autoCapitalize="none"
+              autoCorrect={false}
+              label="Name"
+            ></FormField>
             <FormField
               name="email"
               autoCapitalize="none"
@@ -44,6 +57,11 @@ const RegisterScreen: FC<Props> = () => {
             <FormField
               name="password"
               label="Password"
+              secureTextEntry={true}
+            ></FormField>
+            <FormField
+              name="passwordConfirm"
+              label="Password confirmation"
               secureTextEntry={true}
             ></FormField>
 
