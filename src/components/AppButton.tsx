@@ -7,10 +7,12 @@ interface Props extends PressableProps {
   outline?: boolean;
   marginLeft?: number;
   marginTop?: number;
+  danger?:boolean;
 }
 const AppButton: FC<Props> = ({
   children,
   outline = false,
+  danger= false,
   marginTop = 0,
   marginLeft = 0,
   ...others
@@ -22,13 +24,14 @@ const AppButton: FC<Props> = ({
         styles.container,
 
         {
-          borderColor: outline ? colors.card : colors.primary,
+          backgroundColor: outline ? "transparent" : colors.primary,
+          borderColor: danger ? colors.error :colors.primary,
           marginLeft,
           marginTop,
         },
       ]}
     >
-      <AppText style={styles.text}>{children}</AppText>
+      <AppText style={[styles.text,{color: outline ? colors.white : colors.black}]}>{children}</AppText>
     </Pressable>
   );
 };
@@ -37,6 +40,7 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
     borderRadius: 10,
+    borderColor: colors.primary,
     padding: 10,
   },
   text: {

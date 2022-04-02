@@ -20,17 +20,18 @@ const MoviesScreen: FC<Props> = () => {
   }
   return (
     <Screen>
-      <TextInput
-        editable={isContainData}
-        style={styles.input}
-        placeholder={
-          isContainData ? "Filter movies by title" : "Add movies to filter them"
-        }
-        placeholderTextColor={colors.white}
-        onChangeText={(text) => {
-          filterMovies(text);
-        }}
-      />
+      {
+        isContainData && <TextInput
+              editable={isContainData}
+              style={styles.input}
+              placeholder= "Filter movies by title"
+              placeholderTextColor={colors.white}
+              onChangeText={(text) => {
+                filterMovies(text);
+              }}
+          />
+      }
+
       <FlatList
         ref={flatListRef}
         data={data}

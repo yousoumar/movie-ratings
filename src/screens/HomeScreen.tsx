@@ -13,7 +13,7 @@ const HomeScreen: FC<Props> = ({ navigation }) => {
   const { user } = useAuthContext()!;
   return (
     <ImageBackground
-      style={styles.blackground}
+      style={styles.background}
       resizeMode="cover"
       source={require("../assets/splash.png")}
     >
@@ -51,7 +51,7 @@ const HomeScreen: FC<Props> = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  blackground: {
+  background: {
     flex: 1,
     borderWidth: 1,
   },

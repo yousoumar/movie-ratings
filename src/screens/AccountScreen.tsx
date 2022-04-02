@@ -32,14 +32,9 @@ const AccountScreen: FC<Props> = () => {
             {user?.email.toLowerCase()}
           </AppText>
         </View>
-        <View style={styles.row}>
-          <MaterialCommunityIcons name="lock" color={colors.white} size={30} />
-          <AppText numberOfLines={1} style={styles.text}>
-            *****************
-          </AppText>
-        </View>
         <AppButton
           outline
+          danger
           onPress={() => {
             Alert.alert(
               "You wanna delete your account ?",
