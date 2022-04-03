@@ -1,12 +1,13 @@
 import { useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC, useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, View } from "react-native";
+import { Image, Linking, ScrollView, StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import Rate from "../components/Rate";
 import { colors, sizes, weights } from "../config/variables";
 import { TmdbMoviesStackNavigatorProps } from "../navigators/TmdbMoviesNavigator";
 import Loader from "../components/Loader";
+import AppButton from "../components/AppButton";
 
 type Props = NativeStackScreenProps<
   TmdbMoviesStackNavigatorProps,
@@ -67,6 +68,17 @@ const TmdbMoviesDetailsScreen: FC<Props> = () => {
           <AppText style={styles.title}>{movie.title}</AppText>
           <Rate rate={movie.vote_average} />
           <AppText>{movie.overview}</AppText>
+          {movie.homepage ? (
+            <AppButton
+              marginTop={16}
+              outline
+              onPress={() => Linking.openURL(movie.homepage)}
+            >
+              Homepage
+            </AppButton>
+          ) : (
+            <></>
+          )}
         </View>
       </View>
     </ScrollView>
