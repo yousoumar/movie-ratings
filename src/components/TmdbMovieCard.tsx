@@ -3,17 +3,24 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { colors, sizes, weights } from "../config/variables";
-import { LocalMovieInterface } from "../contexts/LocalDataContext";
-import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 import AppText from "./AppText";
 import Rate from "./Rate";
+import { TmdbMovieInterface } from "../contexts/TmdbDataContext";
+import { TmdbMoviesStackNavigatorProps } from "../navigators/TmdbMoviesNavigator";
 
-type NavigationProp = NativeStackNavigationProp<MoviesStackNavigatorProps>;
+type NavigationProp = NativeStackNavigationProp<TmdbMoviesStackNavigatorProps>;
 
-const MovieCard: FC<LocalMovieInterface> = ({ title, rate, imageUri }) => {
+const TmdbMovieCard: FC<TmdbMovieInterface> = ({
+  title,
+  rate,
+  imageUri,
+  id,
+}) => {
   const navigation = useNavigation<NavigationProp>();
   return (
-    <Pressable onPress={() => navigation?.navigate("MovieDetails", { title })}>
+    <Pressable
+      onPress={() => navigation?.navigate("TmdbMovieDetails", { id, title })}
+    >
       <View style={styles.container}>
         <Image
           style={styles.img}
@@ -53,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieCard;
+export default TmdbMovieCard;

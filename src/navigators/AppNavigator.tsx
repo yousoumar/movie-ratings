@@ -5,8 +5,8 @@ import React, { FC } from "react";
 import { StyleSheet } from "react-native";
 import { navigatorTheme, weights } from "../config/variables";
 import AccountScreen from "../screens/AccountScreen";
-import CreateMovieScreen from "../screens/CreateMovieScreen";
 import MoviesNavigator from "./MoviesNavigator";
+import TmdbMoviesNavigator from "./TmdbMoviesNavigator";
 
 interface Props {}
 
@@ -25,10 +25,10 @@ const AppNavigator: FC<Props> = (props) => {
         }}
       >
         <Tab.Screen
-          name="Movies List"
+          name="Local Movies List"
           component={MoviesNavigator}
           options={{
-            tabBarLabel: "Movies",
+            tabBarLabel: "Local",
             tabBarIcon: ({ color, size, focused }) => (
               <MaterialCommunityIcons
                 name={focused ? "home" : "home-outline"}
@@ -39,15 +39,15 @@ const AppNavigator: FC<Props> = (props) => {
           }}
         />
         <Tab.Screen
-          name="NewMovie"
-          component={CreateMovieScreen}
+          name="TMDB Movies List"
+          component={TmdbMoviesNavigator}
           options={{
-            tabBarLabel: "New Movie",
-            tabBarIcon: ({ size, color, focused }) => (
+            tabBarLabel: "TMDB",
+            tabBarIcon: ({ color, size, focused }) => (
               <MaterialCommunityIcons
-                name={focused ? "plus-circle" : "plus-circle-outline"}
+                name={focused ? "movie" : "movie-outline"}
                 color={color}
-                size={size + 10}
+                size={size}
               />
             ),
           }}

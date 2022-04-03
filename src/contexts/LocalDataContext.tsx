@@ -10,20 +10,20 @@ import React, {
 } from "react";
 import { FlatList } from "react-native";
 
-export interface MovieInterface {
+export interface LocalMovieInterface {
   title: string;
   resume: string;
   rate: number;
   imageUri: string;
 }
 
-interface DataContextType {
-  data: MovieInterface[];
-  flatListRef: RefObject<FlatList<MovieInterface>>;
+interface LacalDataContextType {
+  data: LocalMovieInterface[];
+  flatListRef: RefObject<FlatList<LocalMovieInterface>>;
   isContainData: boolean;
   isLoading: boolean;
-  setData: React.Dispatch<React.SetStateAction<MovieInterface[]>>;
-  fetchMovieByTitle: (title: string) => MovieInterface;
+  setData: React.Dispatch<React.SetStateAction<LocalMovieInterface[]>>;
+  fetchMovieByTitle: (title: string) => LocalMovieInterface;
   addNewMovie: (
     title: string,
     rate: number,
@@ -34,17 +34,17 @@ interface DataContextType {
   removeData: () => void;
 }
 
-const DataContext = createContext<DataContextType | null>(null);
+const LocalDataContext = createContext<LacalDataContextType | null>(null);
 export const useDataContext = () => {
-  return useContext(DataContext);
+  return useContext(LocalDataContext);
 };
 
 const DataContextProvider: FC = ({ children }) => {
-  const [initialData, setInitialData] = useState<MovieInterface[]>([]);
-  const [data, setData] = useState<MovieInterface[]>([]);
+  const [initialData, setInitialData] = useState<LocalMovieInterface[]>([]);
+  const [data, setData] = useState<LocalMovieInterface[]>([]);
   const [isContainData, setIsContainData] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const flatListRef = useRef<FlatList<MovieInterface>>(null);
+  const flatListRef = useRef<FlatList<LocalMovieInterface>>(null);
 
   const getStoredData = async () => {
     try {
@@ -69,7 +69,7 @@ const DataContextProvider: FC = ({ children }) => {
   }, [initialData]);
 
   const fetchMovieByTitle = (title: string) => {
-    return data.find((d) => d.title === title) as MovieInterface;
+    return data.find((d) => d.title === title) as LocalMovieInterface;
   };
 
   const addNewMovie = (
@@ -115,7 +115,7 @@ const DataContextProvider: FC = ({ children }) => {
   };
 
   return (
-    <DataContext.Provider
+    <LocalDataContext.Provider
       value={{
         data,
         setData,
@@ -129,7 +129,7 @@ const DataContextProvider: FC = ({ children }) => {
       }}
     >
       {children}
-    </DataContext.Provider>
+    </LocalDataContext.Provider>
   );
 };
 

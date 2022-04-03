@@ -6,7 +6,7 @@ import AppText from "../components/AppText";
 import Screen from "../components/Screen";
 import { colors } from "../config/variables";
 import { useAuthContext } from "../contexts/AuthContext";
-import { useDataContext } from "../contexts/DataContext";
+import { useDataContext } from "../contexts/LocalDataContext";
 
 interface Props {}
 
