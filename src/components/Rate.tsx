@@ -1,7 +1,6 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
-import { colors, weights } from "../config/variables";
+import { colors, sizes, weights } from "../config/variables";
 import AppText from "./AppText";
 
 interface Props {
@@ -11,8 +10,7 @@ interface Props {
 const Rate: FC<Props> = ({ rate }) => {
   return (
     <AppText style={styles.rate}>
-      {rate}
-      <MaterialCommunityIcons name="star" size={20} color={colors.primary} />
+      {rate} <AppText style={styles.small}>/ 10</AppText>
     </AppText>
   );
 };
@@ -22,6 +20,9 @@ const styles = StyleSheet.create({
     fontWeight: weights.secondary,
     color: colors.primary,
     marginVertical: 10,
+  },
+  small: {
+    fontSize: sizes.small,
   },
 });
 

@@ -1,17 +1,18 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC } from "react";
-import { FlatList, StyleSheet, TextInput } from "react-native";
+import { FlatList, Pressable, StyleSheet, TextInput, View } from "react-native";
 import Loader from "../components/Loader";
 import MovieCard from "../components/MovieCard";
 import Screen from "../components/Screen";
 import StatusInfo from "../components/StatusInfo";
 import { colors, sizes, weights } from "../config/variables";
-import { useDataContext } from "../contexts/DataContext";
+import { useDataContext } from "../contexts/LocalDataContext";
 import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "Movies">;
 
-const MoviesScreen: FC<Props> = () => {
+const MoviesScreen: FC<Props> = ({ navigation }) => {
   const { data, filterMovies, flatListRef, isContainData, isLoading } =
     useDataContext()!;
 
@@ -20,17 +21,28 @@ const MoviesScreen: FC<Props> = () => {
   }
   return (
     <Screen>
-      {
-        isContainData && <TextInput
-              editable={isContainData}
-              style={styles.input}
-              placeholder= "Filter movies by title"
-              placeholderTextColor={colors.white}
-              onChangeText={(text) => {
-                filterMovies(text);
-              }}
+      <View style={styles.topBar}>
+        <TextInput
+          editable={isContainData}
+          style={styles.input}
+          placeholder={
+            isContainData
+              ? "Filter movies by title"
+              : "Add movies to filter them"
+          }
+          placeholderTextColor={colors.white}
+          onChangeText={(text) => {
+            filterMovies(text);
+          }}
+        />
+        <Pressable onPress={() => navigation.navigate("CreateMovie")}>
+          <MaterialCommunityIcons
+            name="plus-circle"
+            color={colors.primary}
+            size={40}
           />
-      }
+        </Pressable>
+      </View>
 
       <FlatList
         ref={flatListRef}
@@ -49,14 +61,23 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    marginHorizontal: 20,
-    marginVertical: 10,
-    backgroundColor: colors.card,
-    padding: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 5,
     borderRadius: 10,
     fontSize: sizes.small,
     fontWeight: weights.secondary,
     color: colors.white,
+    flex: 1,
+    borderColor: colors.primary,
+    borderWidth: 1,
+    marginRight: 16,
+  },
+  topBar: {
+    marginHorizontal: 20,
+    marginVertical: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });
 

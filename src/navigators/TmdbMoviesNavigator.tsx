@@ -2,20 +2,18 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
 import { sizes, weights } from "../config/variables";
-import MovieDetailsScreen from "../screens/MovieDetailsScreen";
-import MoviesScreen from "../screens/MoviesScreen";
-import CreateMovieScreen from "../screens/CreateMovieScreen";
+import TmdbMovieDetailsScreen from "../screens/TmdbMovieDetailsScreen";
+import TmdbMoviesScreen from "../screens/TmdbMoviesScreen";
 
 interface Props {}
 
-export type MoviesStackNavigatorProps = {
-  Movies: undefined;
-  MovieDetails: { title: string };
-  CreateMovie: undefined;
+export type TmdbMoviesStackNavigatorProps = {
+  TmdbMovies: undefined;
+  TmdbMovieDetails: { id: string; title: string };
 };
 
-const MoviesNavigator: FC<Props> = () => {
-  const Stack = createNativeStackNavigator<MoviesStackNavigatorProps>();
+const TmdbMoviesNavigator: FC<Props> = () => {
+  const Stack = createNativeStackNavigator<TmdbMoviesStackNavigatorProps>();
   return (
     <Stack.Navigator
       screenOptions={{
@@ -27,22 +25,16 @@ const MoviesNavigator: FC<Props> = () => {
       }}
     >
       <Stack.Screen
-        name="Movies"
-        component={MoviesScreen}
+        name="TmdbMovies"
+        component={TmdbMoviesScreen}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
-        name="MovieDetails"
-        component={MovieDetailsScreen}
+        name="TmdbMovieDetails"
+        component={TmdbMovieDetailsScreen}
         options={({ route }) => ({
           title: route.params.title,
         })}
-      />
-      <Stack.Screen
-        name="CreateMovie"
-        component={CreateMovieScreen}
-        options={{ title: "New local movie" }}
       />
     </Stack.Navigator>
   );
@@ -52,4 +44,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default MoviesNavigator;
+export default TmdbMoviesNavigator;

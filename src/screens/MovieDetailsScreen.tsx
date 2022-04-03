@@ -5,7 +5,7 @@ import { Image, ScrollView, StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import Rate from "../components/Rate";
 import { colors } from "../config/variables";
-import { useDataContext } from "../contexts/DataContext";
+import { useDataContext } from "../contexts/LocalDataContext";
 import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "MovieDetails">;

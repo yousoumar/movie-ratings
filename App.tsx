@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppLoading from "expo-app-loading";
 import { useState } from "react";
 import { AuthContext, User } from "./src/contexts/AuthContext";
-import DataContext from "./src/contexts/DataContext";
+import LocalDataContext from "./src/contexts/LocalDataContext";
 import AppNavigator from "./src/navigators/AppNavigator";
 import AuthNavigator from "./src/navigators/AuthNavigator";
 
@@ -79,7 +79,7 @@ export default function App() {
   }
 
   return (
-    <DataContext>
+    <LocalDataContext>
       <AuthContext.Provider
         value={{
           user,
@@ -94,6 +94,6 @@ export default function App() {
       >
         {isLogged ? <AppNavigator /> : <AuthNavigator />}
       </AuthContext.Provider>
-    </DataContext>
+    </LocalDataContext>
   );
 }

@@ -6,13 +6,13 @@ import * as Yup from "yup";
 import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
 import Screen from "../components/Screen";
-import { useDataContext } from "../contexts/DataContext";
+import { useDataContext } from "../contexts/LocalDataContext";
 import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(2).label("Title"),
   resume: Yup.string().required().min(30).label("Resume"),
-  rate: Yup.number().required().min(1).max(5).label("Rate"),
+  rate: Yup.number().required().min(1).max(10).label("Rate"),
   image: Yup.string().required().min(30).label("Image"),
 });
 
