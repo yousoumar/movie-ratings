@@ -1,13 +1,13 @@
+import { Ionicons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, TextInput, View } from "react-native";
 import Loader from "../components/Loader";
 import Screen from "../components/Screen";
+import StatusInfo from "../components/StatusInfo";
+import TmdbMovieCard from "../components/TmdbMovieCard";
 import { colors, sizes, weights } from "../config/variables";
 import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
-import TmdbMovieCard from "../components/TmdbMovieCard";
-import { Ionicons } from "@expo/vector-icons";
-import StatusInfo from "../components/StatusInfo";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "Movies">;
 
@@ -30,7 +30,10 @@ const TmdbMoviesScreen: FC<Props> = () => {
       const data = await res.json();
       setData(data.results);
     } catch (e) {
-      setError(e.message);
+      if (e instanceof Error) {
+        console.log(e);
+        setError(e.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -52,7 +55,10 @@ const TmdbMoviesScreen: FC<Props> = () => {
         const data = await res.json();
         setData(data.results);
       } catch (e) {
-        setError(e.message);
+        if (e instanceof Error) {
+          console.log(e);
+          setError(e.message);
+        }
       } finally {
         setLoading(false);
       }

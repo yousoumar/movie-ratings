@@ -2,12 +2,12 @@ import { useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC, useEffect, useState } from "react";
 import { Image, Linking, ScrollView, StyleSheet, View } from "react-native";
+import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
+import Loader from "../components/Loader";
 import Rate from "../components/Rate";
 import { colors, sizes, weights } from "../config/variables";
 import { TmdbMoviesStackNavigatorProps } from "../navigators/TmdbMoviesNavigator";
-import Loader from "../components/Loader";
-import AppButton from "../components/AppButton";
 
 type Props = NativeStackScreenProps<
   TmdbMoviesStackNavigatorProps,
@@ -33,8 +33,10 @@ const TmdbMoviesDetailsScreen: FC<Props> = () => {
         const data = await res.json();
         setMovie(data);
       } catch (e) {
-        console.log(e);
-        setError(e.message);
+        if (e instanceof Error) {
+          console.log(e);
+          setError(e.message);
+        }
       } finally {
         setLoading(false);
       }
