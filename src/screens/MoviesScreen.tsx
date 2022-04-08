@@ -1,3 +1,4 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { FlatList, Pressable, StyleSheet, TextInput, View } from "react-native";
@@ -8,7 +9,6 @@ import StatusInfo from "../components/StatusInfo";
 import { colors, sizes, weights } from "../config/variables";
 import { useDataContext } from "../contexts/LocalDataContext";
 import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "Movies">;
 
@@ -61,15 +61,13 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    paddingHorizontal: 16,
-    paddingVertical: 5,
+    backgroundColor: colors.card,
+    padding: 10,
     borderRadius: 10,
     fontSize: sizes.small,
     fontWeight: weights.secondary,
     color: colors.white,
     flex: 1,
-    borderColor: colors.primary,
-    borderWidth: 1,
     marginRight: 16,
   },
   topBar: {
