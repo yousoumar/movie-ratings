@@ -44,7 +44,7 @@ const RegisterScreen: FC<Props> = () => {
           <>
             <FormField
               name="name"
-              autoCapitalize="none"
+              autoCapitalize="words"
               autoCorrect={false}
               label="Name"
             ></FormField>

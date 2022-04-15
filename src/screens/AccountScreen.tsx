@@ -23,7 +23,7 @@ const AccountScreen: FC<Props> = () => {
             size={30}
           />
           <AppText numberOfLines={1} style={styles.text}>
-            {user?.name.toLowerCase()}
+            {user?.name}
           </AppText>
         </View>
         <View style={styles.row}>
