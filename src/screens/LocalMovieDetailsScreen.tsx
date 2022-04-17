@@ -4,16 +4,21 @@ import React, { FC } from "react";
 import { Image, ScrollView, StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import Rate from "../components/Rate";
-import { colors } from "../config/variables";
+import { colors, sizes, weights } from "../config/variables";
 import { useDataContext } from "../contexts/LocalDataContext";
-import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
+import { LocalMoviesStackNavigatorProps } from "../navigators/LocalMoviesNavigator";
 
-type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "MovieDetails">;
+type Props = NativeStackScreenProps<
+  LocalMoviesStackNavigatorProps,
+  "MovieDetails"
+>;
 
-const MoviesDetailsScreen: FC<Props> = () => {
+const LocalMoviesDetailsScreen: FC<Props> = () => {
   const route = useRoute<Props["route"]>();
   const { fetchMovieByTitle } = useDataContext()!;
-  const { rate, resume, imageUri } = fetchMovieByTitle(route.params.title);
+  const { rate, resume, imageUri, title } = fetchMovieByTitle(
+    route.params.title
+  );
 
   return (
     <ScrollView>
@@ -24,6 +29,7 @@ const MoviesDetailsScreen: FC<Props> = () => {
           source={{ uri: imageUri }}
         />
         <View style={styles.content}>
+          <AppText style={styles.title}>{title}</AppText>
           <Rate rate={rate} />
           <AppText>{resume}</AppText>
         </View>
@@ -50,6 +56,10 @@ const styles = StyleSheet.create({
     height: 500,
     borderRadius: 10,
   },
+  title: {
+    fontSize: sizes.secondary,
+    fontWeight: weights.primary,
+  },
 });
 
-export default MoviesDetailsScreen;
+export default LocalMoviesDetailsScreen;

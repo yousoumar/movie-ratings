@@ -7,9 +7,9 @@ import Screen from "../components/Screen";
 import StatusInfo from "../components/StatusInfo";
 import TmdbMovieCard from "../components/TmdbMovieCard";
 import { colors, sizes, weights } from "../config/variables";
-import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
+import { LocalMoviesStackNavigatorProps } from "../navigators/LocalMoviesNavigator";
 
-type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "Movies">;
+type Props = NativeStackScreenProps<LocalMoviesStackNavigatorProps, "Movies">;
 
 const TmdbMoviesScreen: FC<Props> = () => {
   const [data, setData] = useState<any>([]);

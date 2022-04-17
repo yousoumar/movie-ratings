@@ -8,11 +8,11 @@ import Screen from "../components/Screen";
 import StatusInfo from "../components/StatusInfo";
 import { colors, sizes, weights } from "../config/variables";
 import { useDataContext } from "../contexts/LocalDataContext";
-import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
+import { LocalMoviesStackNavigatorProps } from "../navigators/LocalMoviesNavigator";
 
-type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "Movies">;
+type Props = NativeStackScreenProps<LocalMoviesStackNavigatorProps, "Movies">;
 
-const MoviesScreen: FC<Props> = ({ navigation }) => {
+const LocalMoviesScreen: FC<Props> = ({ navigation }) => {
   const { data, filterMovies, flatListRef, isContainData, isLoading } =
     useDataContext()!;
 
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MoviesScreen;
+export default LocalMoviesScreen;

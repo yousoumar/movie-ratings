@@ -1,7 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
-import { sizes, weights } from "../config/variables";
 import TmdbMovieDetailsScreen from "../screens/TmdbMovieDetailsScreen";
 import TmdbMoviesScreen from "../screens/TmdbMoviesScreen";
 
@@ -18,10 +17,6 @@ const TmdbMoviesNavigator: FC<Props> = () => {
     <Stack.Navigator
       screenOptions={{
         headerBackTitleVisible: false,
-        headerTitleStyle: {
-          fontSize: sizes.secondary,
-          fontWeight: weights.primary,
-        },
       }}
     >
       <Stack.Screen
@@ -31,10 +26,8 @@ const TmdbMoviesNavigator: FC<Props> = () => {
       />
       <Stack.Screen
         name="TmdbMovieDetails"
+        options={{ headerTitle: "" }}
         component={TmdbMovieDetailsScreen}
-        options={({ route }) => ({
-          title: route.params.title,
-        })}
       />
     </Stack.Navigator>
   );

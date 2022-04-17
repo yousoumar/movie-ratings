@@ -4,11 +4,11 @@ import React, { FC } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { colors, sizes, weights } from "../config/variables";
 import { LocalMovieInterface } from "../contexts/LocalDataContext";
-import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
+import { LocalMoviesStackNavigatorProps } from "../navigators/LocalMoviesNavigator";
 import AppText from "./AppText";
 import Rate from "./Rate";
 
-type NavigationProp = NativeStackNavigationProp<MoviesStackNavigatorProps>;
+type NavigationProp = NativeStackNavigationProp<LocalMoviesStackNavigatorProps>;
 
 const MovieCard: FC<LocalMovieInterface> = ({ title, rate, imageUri }) => {
   const navigation = useNavigation<NavigationProp>();

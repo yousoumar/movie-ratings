@@ -5,7 +5,7 @@ import React, { FC } from "react";
 import { StyleSheet } from "react-native";
 import { navigatorTheme, weights } from "../config/variables";
 import AccountScreen from "../screens/AccountScreen";
-import MoviesNavigator from "./MoviesNavigator";
+import LocalMoviesNavigator from "./LocalMoviesNavigator";
 import TmdbMoviesNavigator from "./TmdbMoviesNavigator";
 
 interface Props {}
@@ -26,7 +26,7 @@ const AppNavigator: FC<Props> = (props) => {
       >
         <Tab.Screen
           name="Local Movies List"
-          component={MoviesNavigator}
+          component={LocalMoviesNavigator}
           options={{
             tabBarLabel: "Local",
             tabBarIcon: ({ color, size, focused }) => (

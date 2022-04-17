@@ -2,20 +2,20 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
 import { sizes, weights } from "../config/variables";
-import MovieDetailsScreen from "../screens/MovieDetailsScreen";
-import MoviesScreen from "../screens/MoviesScreen";
-import CreateMovieScreen from "../screens/CreateMovieScreen";
+import LocalMovieCreationScreen from "../screens/LocalMovieCreationScreen";
+import LocalMoviesDetailsScreen from "../screens/LocalMovieDetailsScreen";
+import LocalMoviesScreen from "../screens/LocalMoviesScreen";
 
 interface Props {}
 
-export type MoviesStackNavigatorProps = {
+export type LocalMoviesStackNavigatorProps = {
   Movies: undefined;
   MovieDetails: { title: string };
   CreateMovie: undefined;
 };
 
-const MoviesNavigator: FC<Props> = () => {
-  const Stack = createNativeStackNavigator<MoviesStackNavigatorProps>();
+const LocalMoviesNavigator: FC<Props> = () => {
+  const Stack = createNativeStackNavigator<LocalMoviesStackNavigatorProps>();
   return (
     <Stack.Navigator
       screenOptions={{
@@ -28,21 +28,19 @@ const MoviesNavigator: FC<Props> = () => {
     >
       <Stack.Screen
         name="Movies"
-        component={MoviesScreen}
+        component={LocalMoviesScreen}
         options={{ headerShown: false }}
       />
 
       <Stack.Screen
         name="MovieDetails"
-        component={MovieDetailsScreen}
-        options={({ route }) => ({
-          title: route.params.title,
-        })}
+        component={LocalMoviesDetailsScreen}
+        options={{ headerTitle: "" }}
       />
       <Stack.Screen
         name="CreateMovie"
-        component={CreateMovieScreen}
-        options={{ title: "New local movie" }}
+        component={LocalMovieCreationScreen}
+        options={{ title: "" }}
       />
     </Stack.Navigator>
   );
@@ -52,4 +50,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default MoviesNavigator;
+export default LocalMoviesNavigator;

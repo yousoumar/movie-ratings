@@ -7,7 +7,7 @@ import AppButton from "../components/AppButton";
 import FormField from "../components/FormField";
 import Screen from "../components/Screen";
 import { useDataContext } from "../contexts/LocalDataContext";
-import { MoviesStackNavigatorProps } from "../navigators/MoviesNavigator";
+import { LocalMoviesStackNavigatorProps } from "../navigators/LocalMoviesNavigator";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(2).label("Title"),
@@ -16,9 +16,12 @@ const validationSchema = Yup.object().shape({
   image: Yup.string().required().min(30).label("Image"),
 });
 
-type Props = NativeStackScreenProps<MoviesStackNavigatorProps, "CreateMovie">;
+type Props = NativeStackScreenProps<
+  LocalMoviesStackNavigatorProps,
+  "CreateMovie"
+>;
 
-const CreateMovieScreen: FC<Props> = ({ navigation }) => {
+const LocalMovieCreationScreen: FC<Props> = ({ navigation }) => {
   const { addNewMovie, flatListRef } = useDataContext()!;
 
   return (
@@ -93,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateMovieScreen;
+export default LocalMovieCreationScreen;
